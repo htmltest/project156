@@ -601,3 +601,18 @@ h1+.meet-card-btns {margin-top:16px}
     .support-messages-success-btn {float:none; margin:25px 0 0 0}
     .support-messages-success-btn .btn {height:53px; line-height:53px; font-size:17px; width:auto; display:inline-block}
 }
+
+.b-place-big {margin:40px 0 0 0; line-height:0}
+.b-place-big:last-child {margin:80px 0 0 0}
+.b-place-big a {display:block}
+.b-place-big img {display:block}
+.b-place-big img.b-place-big-mobile {display:none}
+.b-place-big-buy {margin:11px 0 0 0; font-size:12px; line-height:14px}
+.b-place-big-buy a {display:inline; text-decoration:underline; color:#070707}
+.b-place-big-buy a:hover {text-decoration:none}
+
+@media screen and (max-width:1199px) {
+    .b-place-big:last-child {margin:40px 0 0 0}
+    .b-place-big img {display:none}
+    .b-place-big img.b-place-big-mobile {display:block}
+}
