@@ -117,12 +117,12 @@
                             </div>
                             <div class="mobile-menu-list-add">
                                 <ul>
-                                    <li class="active"><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-1.svg" alt="" /></div>Рабочий стол</a></li>
+                                    <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-1.svg" alt="" /></div>Рабочий стол</a></li>
+                                    <li class="active"><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-2.svg" alt="" /><span>3</span></div>Встречи</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-3.svg" alt="" /></div>Компания</a></li>
-                                    <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-4.svg" alt="" /></div>Представители компании</a></li>
+                                    <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-4.svg" alt="" /></div>Представители</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-5.svg" alt="" /></div>Техническая поддержка</a></li>
-                                    <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-7.svg" alt="" /></div>Выйти</a></li>
                                 </ul>
                             </div>
@@ -216,12 +216,12 @@
                         <div class="side-menu">
                             <ul>
                                 <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-1.svg" alt="" /></div>Рабочий стол</a></li>
-                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-2.svg" alt="" /><span>3</span></div>Встречи</a></li>
+                                <li class="active"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
+                                <li class="sep"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-2.svg" alt="" /><span>3</span></div>Встречи</a></li>
                                 <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-3.svg" alt="" /></div>Компания</a></li>
-                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-4.svg" alt="" /></div>Представители компании</a></li>
-                                <li class="active"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-5.svg" alt="" /></div>Техническая поддержка</a></li>
-                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
-                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-7.svg" alt="" /></div>Выйти</a></li>
+                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-4.svg" alt="" /></div>Представители</a></li>
+                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-5.svg" alt="" /></div>Техническая поддержка</a></li>
+                                <li class="sep"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-7.svg" alt="" /></div>Выйти</a></li>
                             </ul>
                         </div>
                     </div>
@@ -231,42 +231,77 @@
                     <div class="cabinet-container">
                         <div class="cabinet-container-inner">
 
-                            <h1><a href="#" class="back-link"><svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 2L3 10.5L11 19" stroke-width="3" /></svg></a>Добавление сообщения</h1>
+                            <h1>Профиль</h1>
 
-                            <!-- cabinet form -->
-                            <div class="cabinet-form">
-                                <form action="#" method="post">
-                                    <div class="form-select">
-                                        <select name="theme" data-placeholder="Тема сообщения" class="required">
-                                            <option value=""></option>
-                                            <option value="1" selected="selected">Статус по встрече</option>
-                                            <option value="2">Вариант 2</option>
-                                            <option value="3">Вариант 3</option>
-                                            <option value="4">Вариант 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-input"><span>Сообщение</span><textarea name="message" cols="5" rows="3">Проект был реализован с нуля всего за 4 месяца, что является рекордом для компании-производителя «МАЙ» по скорости воплощения инновационного продукта. Титестеры разработали бленд, который сразу же получил высокие оценки у потребителей.
+                            <!-- tabs -->
+                            <div class="tabs">
 
-Лидер бренда Ирина Ивченко отметила, что впереди у компании большие планы по развитию сегментов «Чай с травяными добавками» и «Чистый травяной чай».
-Отдельного упоминания заслуживает название саб-бренда. «Травы России» родились легко и непринужденно, ведь это название полностью отражает позиционирование бренда «Майский», его традиционные ценности, близкие людям в России. «Мы уверены, что данный саб-бренд, наряду</textarea></div>
+                                <div class="tabs-menu"></div>
 
-                                    <div class="support-form-bottom">
-                                        <div class="support-form-file">
-                                            <div class="form-file">
-                                                <div class="form-file-input"><input type="file" name="file" class="required" /><span>Загрузить файл</span></div>
-                                                <div class="form-file-name"></div>
+                                <!-- tabs container -->
+                                <div class="tabs-container">
+
+                                    <!-- tabs content -->
+                                    <div class="tabs-content">
+                                        <div class="tabs-content-title">Профиль</div>
+                                        <div class="tabs-content-inner">
+
+                                            <!-- cabinet form -->
+                                            <div class="cabinet-form">
+                                                <form action="#" method="post">
+                                                    <div class="message message-success">
+                                                        <div class="message-title">Отправлено</div>
+                                                        <div class="message-text">
+                                                            <p>Проект BEE-TOGETHER.ru реализуется с июня 2016 года, с&nbsp;каждым выпуском увеличивая число участников, диапазон предложений и географию.</p>
+                                                            <p>Так, 8-я выставка-платформа собрала рекордное количество экспонентов — 133 компании из полутора десятка стран.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-input"><span>ФИО<em>*</em></span><input type="text" name="name" value="Иван Иванов Иванович" class="required" /></div>
+                                                    <div class="form-input"><span>Должность<em>*</em></span><input type="text" name="post" value="" class="required" /></div>
+                                                    <div class="form-input"><span>Мобильный телефон<em>*</em></span><input type="text" name="phone" value="+7 495 123-45-67" class="required phoneRU" /><div class="form-hint">В формате +7 495 111-22-33</div></div>
+                                                    <div class="form-input"><span>Адрес электронной почты<em>*</em></span><input type="text" name="email" value="" class="required email" /></div>
+                                                    <div class="form-submit"><button type="submit" class="btn">Сохранить</button></div>
+                                                </form>
                                             </div>
+                                            <!-- cabinet form END -->
+
                                         </div>
-                                        <div class="form-submit"><button type="submit" class="btn">Отправить</button></div>
                                     </div>
-                                </form>
+                                    <!-- tabs content END -->
+
+                                    <!-- tabs content -->
+                                    <div class="tabs-content">
+                                        <div class="tabs-content-title">Настройки</div>
+                                        <div class="tabs-content-inner">
+
+                                            <!-- cabinet form -->
+                                            <div class="cabinet-form">
+                                                <form action="#" method="post">
+                                                    <h3>Уведомления</h3>
+                                                    <div class="form-checkbox">
+                                                        <label><input type="checkbox" name="notification1" /><span>Мелкосерийная зона</span></label>
+                                                    </div>
+                                                    <div class="form-checkbox">
+                                                        <label><input type="checkbox" name="notification2" /><span>Деловая программа</span></label>
+                                                    </div>
+                                                    <div class="form-submit form-submit-profile"><button type="submit" class="btn">Сохранить</button></div>
+                                                </form>
+                                            </div>
+                                            <!-- cabinet form END -->
+
+                                        </div>
+                                    </div>
+                                    <!-- tabs content END -->
+
+                                </div>
+                                <!-- tabs container END -->
                             </div>
-                            <!-- cabinet form END -->
+                            <!-- tabs END -->
 
                             <div class="b-place-big">
                                 <a href="#"><img src="files/b-place-big.jpg" alt="" /><img src="files/b-place-big-mobile.jpg" alt="" class="b-place-big-mobile" /></a>
                             </div>
-
                         </div>
                     </div>
                     <!-- cabinet container END -->
@@ -374,6 +409,7 @@
         <script src="js/slick/slick.min.js"></script>
         <script src="js/jquery.mask.min.js"></script>
         <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/validation/additional-methods.min.js"></script>
         <script src="js/validation/messages_ru.js"></script>
         <script src="js/select2/select2.min.js"></script>
         <script src="js/select2/ru.js"></script>

@@ -271,7 +271,7 @@ $(document).ready(function() {
         $(this).parent().toggleClass('open');
     });
 
-    $('.tabs-content-title').click(function(e) {
+    $('body').on('click', '.tabs-content-title', function(e) {
         $(this).parent().toggleClass('open');
     });
 
@@ -464,7 +464,7 @@ function initForm(curForm) {
         }
     });
 
-    curForm.validate({
+    var curFormOptions = {
         ignore: '',
         submitHandler: function(form) {
             var curForm = $(form);
@@ -490,11 +490,58 @@ function initForm(curForm) {
                     initForm(curForm);
                     curForm.removeClass('loading');
                 });
+            } else if (curForm.hasClass('ajax-form-faq')) {
+                curForm.addClass('loading');
+                var formData = new FormData(form);
+
+                if (curForm.find('[type=file]').length != 0) {
+                    var file = curForm.find('[type=file]')[0].files[0];
+                    formData.append('file', file);
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: curForm.attr('action'),
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    data: formData,
+                    cache: false
+                }).done(function(data) {
+                    if (data.status) {
+                        curForm.find('textarea').val('').trigger('blur');
+                        curForm.parent().find('.faq-list-self').prepend('<div class="faq-item"><div class="faq-item-title"><a href="#">' + data.title + '<span>' + data.date + '</span></span></a></div></div>');
+                        curForm.find('.message').remove();
+                        curForm.prepend('<div class="message message-success"><div class="message-title">' + curForm.find('.form-success-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
+                    } else {
+                        curForm.find('.message').remove();
+                        curForm.prepend('<div class="message message-error"><div class="message-title">' + curForm.find('.form-error-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
+                    }
+                    curForm.removeClass('loading');
+                });
             } else {
                 form.submit();
             }
         }
-    });
+    };
+
+    if (curForm.find('.email-phone-group').length > 0) {
+        curFormOptions.rules = {
+            email: {
+                require_from_group: [1, '.email-phone-group']
+            },
+            phone: {
+                require_from_group: [1, '.email-phone-group']
+            }
+        }
+
+        curFormOptions.messages = {
+            email: 'Заполните хотя бы одно из этих полей',
+            phone: 'Заполните хотя бы одно из этих полей'
+        }
+    }
+
+    curForm.validate(curFormOptions);
 }
 
 $(window).on('load resize scroll', function() {

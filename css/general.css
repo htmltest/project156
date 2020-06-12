@@ -57,7 +57,7 @@ blockquote::before {content:""; display:block; width:58px; height:49px; position
     h1+p {margin-top:5px}
     h2+p {margin-top:8px}
     h3+p {margin-top:10px}
-    ul li::before {top:14px}
+    ul li::before {top:8px}
     ol li {padding:0 0 0 26px}
     li ol li {padding:0 0 0 43px}
     ol li::before {font-size:20px; font-weight:300}
@@ -121,6 +121,9 @@ form.loading::after {content:""; display:block; position:absolute; left:0; top:0
 .message-error .message-title::before {background:url(../images/message-error.svg) no-repeat center}
 .message-error .message-title {color:#ec1d22}
 .message-error .message-text::before {background:rgba(236, 29, 34, 0.47)}
+
+.form-success-text-title {display:none}
+.form-error-text-title {display:none}
 
 .btn {display:inline-block; vertical-align:top; margin:0; padding:0 75px 0 61px; overflow:visible; outline:none; vertical-align:top; height:63px; text-decoration:none; background:#008cc9; color:#fff; border:1px solid #008cc9; border-radius:0; font:14px/63px Arial, Helvetica, sans-serif; letter-spacing:0.05em; text-transform:uppercase; text-align:center; position:relative; -webkit-appearance:none; cursor:pointer; transition:all 0.2s; box-sizing:border-box}
 .btn::before {content:""; display:block; position:absolute; right:-11px; bottom:-11px; width:100%; height:100%; border-right:10px solid #008cc9; border-bottom:10px solid #008cc9; pointer-events:none; transition:all 0.2s; z-index:-1; opacity:0.2}
@@ -598,7 +601,8 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:82px; backgro
 @media screen and (max-width:1169px) {
     .contacts-list {margin:0}
     .contacts-item {display:block; width:auto; padding:0; margin:20px 0 0 0}
-    .contacts-item-name {padding:0 72px 0 0}
+    .contacts-item-name {padding:0 72px 0 0; margin:0 0 4px 0}
+    .contacts-item-phone {margin:0; font-size:20px; line-height:30px}
     .contacts-item-mobile-link {display:block; position:absolute; width:52px; height:52px; background:url(../images/contacts-item-open.svg) no-repeat; right:10px; top:10px}
     .contacts-item.open .contacts-item-mobile-link {background:url(../images/contacts-item-close.svg) no-repeat center}
     .contacts-item-mobile {display:none; position:absolute; left:0; top:0; right:0; bottom:0; background:#fff; text-align:center; font-size:0; line-height:0; letter-spacing:-1px}
@@ -787,14 +791,15 @@ footer .container {position:relative}
 .footer-bottom::after {content:""; display:block; position:absolute; right:100%; top:0; bottom:0; width:9999px; background:#ecf6fb}
 
 @media screen and (max-width:1169px) {
-    .footer-bottom {margin:38px 0 0 0; background:#f5f5f5; padding:0 20px 20px 20px}
-    .footer-bottom::after {content:""; display:block; clear:both}
+    .footer-bottom {float:none; width:auto; margin:35px -20px 0 -20px; background:#f5f5f5; padding:0; overflow:hidden; height:auto}
+    .footer-bottom::before {display:none}
+    .footer-bottom::after {display:none}
 }
 
 .footer-copyrights {font-weight:normal; font-size:12px; line-height:14px; color:#363636; margin:8px 0 0 0}
 
 @media screen and (max-width:1169px) {
-    .footer-copyrights {font-size:20px; line-height:30px; color:#686868; text-align:center}
+    .footer-copyrights {font-size:20px; line-height:30px; color:#686868; margin:0; position:absolute; right:20px; bottom:124px; z-index:1}
 }
 
 .footer-links {float:right; font-weight:normal; font-size:12px; line-height:47px; color:#363636}
@@ -805,7 +810,7 @@ footer .container {position:relative}
 .footer-link a:hover {text-decoration:underline}
 
 @media screen and (max-width:1169px) {
-    .footer-links {display:none}
+    .footer-links {float:none; padding:29px 0 32px 20px; font-size:20px; line-height:30px; color:#000}
     .footer-link {float:none; margin:20px 0 0 0}
     .footer-link:first-child {margin:0}
     .footer-link a {color:#000}
@@ -815,6 +820,17 @@ footer .container {position:relative}
 .footer-partner {float:left; margin:0 0 0 14px; line-height:47px}
 .footer-partner:first-child {margin:0}
 .footer-partner img {vertical-align:middle; margin:-2px 0 0 0}
+.footer-partner:nth-child(1) img {width:78px}
+.footer-partner:nth-child(2) img {width:34px}
+
+@media screen and (max-width:1169px) {
+    .footer-partners {float:none; text-align:center; font-size:0; line-height:0; letter-spacing:-1px; background:#fff; padding:0 0 28px 0}
+    .footer-partner {float:none; display:inline-block; vertical-align:middle; margin:0 0 0 33px; line-height:0}
+    .footer-partner:first-child {margin:0}
+    .footer-partner img {margin:0}
+    .footer-partner:nth-child(1) img {width:auto}
+    .footer-partner:nth-child(2) img {width:auto}
+}
 
 .up-link {display:block; opacity:0; visibility:hidden; position:fixed; z-index:90; right:4px; bottom:4px; transition:opacity 0.2s}
 .up-link.visible {opacity:1; visibility:visible}

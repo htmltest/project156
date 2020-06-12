@@ -118,9 +118,9 @@
                             <div class="mobile-menu-list-add">
                                 <ul>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-1.svg" alt="" /></div>Рабочий стол</a></li>
-                                    <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
+                                    <li class="active"><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-2.svg" alt="" /><span>3</span></div>Встречи</a></li>
-                                    <li class="active"><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-3.svg" alt="" /></div>Компания</a></li>
+                                    <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-3.svg" alt="" /></div>Компания</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-4.svg" alt="" /></div>Представители</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-5.svg" alt="" /></div>Техническая поддержка</a></li>
                                     <li><a href="#"><div class="mobile-menu-list-add-icon"><img src="images/side-menu-7.svg" alt="" /></div>Выйти</a></li>
@@ -216,9 +216,9 @@
                         <div class="side-menu">
                             <ul>
                                 <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-1.svg" alt="" /></div>Рабочий стол</a></li>
-                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
+                                <li class="active"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-6.svg" alt="" /></div>Профиль</a></li>
                                 <li class="sep"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-2.svg" alt="" /><span>3</span></div>Встречи</a></li>
-                                <li class="active"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-3.svg" alt="" /></div>Компания</a></li>
+                                <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-3.svg" alt="" /></div>Компания</a></li>
                                 <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-4.svg" alt="" /></div>Представители</a></li>
                                 <li><a href="#"><div class="side-menu-icon"><img src="images/side-menu-5.svg" alt="" /></div>Техническая поддержка</a></li>
                                 <li class="sep"><a href="#"><div class="side-menu-icon"><img src="images/side-menu-7.svg" alt="" /></div>Выйти</a></li>
@@ -231,37 +231,73 @@
                     <div class="cabinet-container">
                         <div class="cabinet-container-inner">
 
-                            <h1>Компания</h1>
+                            <h1>Профиль</h1>
 
-                            <!-- cabinet form -->
-                            <div class="cabinet-form">
-                                <form action="#" method="post">
-                                    <div class="form-input"><span>Название компании<em>*</em></span><input type="text" name="company" value="" class="required" /></div>
-                                    <div class="form-input"><span>Город<em>*</em></span><input type="text" name="city" value="" class="required" /></div>
-                                    <div class="form-select">
-                                        <select name="type" data-placeholder="Род деятельности *" class="required">
-                                            <option value=""></option>
-                                            <option value="1">Вариант 1</option>
-                                            <option value="2">Вариант 2</option>
-                                            <option value="3">Вариант 3</option>
-                                            <option value="4">Вариант 4</option>
-                                        </select>
+                            <!-- tabs -->
+                            <div class="tabs">
+
+                                <div class="tabs-menu"></div>
+
+                                <!-- tabs container -->
+                                <div class="tabs-container">
+
+                                    <!-- tabs content -->
+                                    <div class="tabs-content">
+                                        <div class="tabs-content-title">Профиль</div>
+                                        <div class="tabs-content-inner">
+
+                                            <!-- cabinet form -->
+                                            <div class="cabinet-form">
+                                                <form action="#" method="post">
+                                                    <div class="message message-error">
+                                                        <div class="message-title">Ошибка</div>
+                                                        <div class="message-text">
+                                                            <p>Проект BEE-TOGETHER.ru реализуется с июня 2016 года, с&nbsp;каждым выпуском увеличивая число участников, диапазон предложений и географию.</p>
+                                                            <p>Так, 8-я выставка-платформа собрала рекордное количество экспонентов — 133 компании из полутора десятка стран.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-input"><span>ФИО<em>*</em></span><input type="text" name="name" value="Иван Иванов Иванович" class="required" /></div>
+                                                    <div class="form-input"><span>Должность<em>*</em></span><input type="text" name="post" value="" class="required" /></div>
+                                                    <div class="form-input"><span>Мобильный телефон<em>*</em></span><input type="text" name="phone" value="+7 495 123-45-67" class="required phoneRU" /><div class="form-hint">В формате +7 495 111-22-33</div></div>
+                                                    <div class="form-input"><span>Адрес электронной почты<em>*</em></span><input type="text" name="email" value="" class="required email" /></div>
+                                                    <div class="form-submit"><button type="submit" class="btn">Сохранить</button></div>
+                                                </form>
+                                            </div>
+                                            <!-- cabinet form END -->
+
+                                        </div>
                                     </div>
-                                    <div class="form-select">
-                                        <select name="form" data-placeholder="Форма организации *" class="required">
-                                            <option value=""></option>
-                                            <option value="1">Вариант 1</option>
-                                            <option value="2">Вариант 2</option>
-                                            <option value="3">Вариант 3</option>
-                                            <option value="4">Вариант 4</option>
-                                        </select>
+                                    <!-- tabs content END -->
+
+                                    <!-- tabs content -->
+                                    <div class="tabs-content">
+                                        <div class="tabs-content-title">Настройки</div>
+                                        <div class="tabs-content-inner">
+
+                                            <!-- cabinet form -->
+                                            <div class="cabinet-form">
+                                                <form action="#" method="post">
+                                                    <h3>Уведомления</h3>
+                                                    <div class="form-checkbox">
+                                                        <label><input type="checkbox" name="notification1" /><span>Мелкосерийная зона</span></label>
+                                                    </div>
+                                                    <div class="form-checkbox">
+                                                        <label><input type="checkbox" name="notification2" /><span>Деловая программа</span></label>
+                                                    </div>
+                                                    <div class="form-submit form-submit-profile"><button type="submit" class="btn">Сохранить</button></div>
+                                                </form>
+                                            </div>
+                                            <!-- cabinet form END -->
+
+                                        </div>
                                     </div>
-                                    <div class="form-input"><span>ИНН<em>*</em></span><input type="text" name="inn" value="" class="required" /></div>
-                                    <div class="form-input"><span>Сайт компании или аккаунт в соц сетях<em>*</em></span><input type="text" name="url" value="" class="required" /></div>
-                                    <div class="form-submit"><button type="submit" class="btn">Сохранить</button></div>
-                                </form>
+                                    <!-- tabs content END -->
+
+                                </div>
+                                <!-- tabs container END -->
                             </div>
-                            <!-- cabinet form END -->
+                            <!-- tabs END -->
 
                             <div class="b-place-big">
                                 <a href="#"><img src="files/b-place-big.jpg" alt="" /><img src="files/b-place-big-mobile.jpg" alt="" class="b-place-big-mobile" /></a>

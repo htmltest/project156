@@ -28,5 +28,17 @@ $(document).ready(function() {
         $(this).parent().parent().toggleClass('open');
         $('header').addClass('header-up');
     });
+    
+    $('.meets-dates a').click(function(e) {
+        var curLink = $(this);
+        if (!curLink.hasClass('active')) {
+            $('.meets-dates a.active').removeClass('active');
+            curLink.addClass('active');
+            var curIndex = $('.meets-dates a').index(curLink);
+            $('.meets-content.active').removeClass('active');
+            $('.meets-content').eq(curIndex).addClass('active');
+        }
+        e.preventDefault();
+    });
 
 });
