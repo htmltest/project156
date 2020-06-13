@@ -80,11 +80,11 @@
     border-radius: 4px; }
   .datepicker--cell.-selected- {
     border: none;
-    background: rgba(252, 228, 128, 0.4); }
+    background: rgba(0, 140, 201, 0.35); }
     .datepicker--cell.-selected-.-current- {
-      background: rgba(252, 228, 128, 0.4); }
+      background: rgba(0, 140, 201, 0.35); }
     .datepicker--cell.-selected-.-focus- {
-      background: rgba(252, 228, 128, 0.4); }
+      background: rgba(0, 140, 201, 0.35); }
   .datepicker--cell:empty {
     cursor: default; }
 
@@ -98,7 +98,7 @@
   margin: 8px 0 3px; }
 
 .datepicker--day-name {
-  color: #FF9A19;
+  color: #2e9ecf;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;

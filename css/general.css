@@ -603,6 +603,7 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:82px; backgro
     .contacts-item {display:block; width:auto; padding:0; margin:20px 0 0 0}
     .contacts-item-name {padding:0 72px 0 0; margin:0 0 4px 0}
     .contacts-item-phone {margin:0; font-size:20px; line-height:30px}
+    .contacts-item-email {font-size:20px; line-height:30px}
     .contacts-item-mobile-link {display:block; position:absolute; width:52px; height:52px; background:url(../images/contacts-item-open.svg) no-repeat; right:10px; top:10px}
     .contacts-item.open .contacts-item-mobile-link {background:url(../images/contacts-item-close.svg) no-repeat center}
     .contacts-item-mobile {display:none; position:absolute; left:0; top:0; right:0; bottom:0; background:#fff; text-align:center; font-size:0; line-height:0; letter-spacing:-1px}
