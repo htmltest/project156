@@ -28,7 +28,7 @@ $(document).ready(function() {
         $(this).parent().parent().toggleClass('open');
         $('header').addClass('header-up');
     });
-    
+
     $('.meets-dates a').click(function(e) {
         var curLink = $(this);
         if (!curLink.hasClass('active')) {
@@ -143,7 +143,358 @@ $(document).ready(function() {
         curTable.find('.manager-table-head-schedule').eq(curIndex).addClass('hover');
     });
 
+    $('body').on('click', '.faq-item-title a', function(e) {
+        var curItem = $(this).parent().parent();
+        curItem.toggleClass('open');
+        curItem.find('.faq-item-answer').stop(true, true).slideToggle();
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.support-search-link', function(e) {
+        $('html').addClass('support-search-open');
+        $('.support-search-window-input input').trigger('focus');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.support-search').length == 0) {
+            $('html').removeClass('support-search-open');
+        }
+    });
+
+    $('.meet-add-step-ctrl-next a').click(function(e) {
+        var curStep = $('.meet-add-step').index($('.meet-add-step.active'));
+        curStep++;
+        $('.meet-add-step.active').removeClass('active').addClass('success');
+        $('.meet-add-step').eq(curStep).addClass('active');
+        $('.meet-add-content.active').removeClass('active');
+        $('.meet-add-content').eq(curStep).addClass('active');
+        $('html, body').animate({'scrollTop': 0});
+        if (curStep == 1) {
+            meetAddTimeUpdate();
+        }
+        if (curStep == 2) {
+            meetAddConfirmUpdate();
+        }
+        e.preventDefault();
+    });
+
+    $('.meet-add-step-ctrl-submit a').click(function(e) {
+        meetAddConfirm();
+        e.preventDefault();
+    });
+
+    $('.meet-add-step-ctrl-back a').click(function(e) {
+        var curStep = $('.meet-add-step').index($('.meet-add-step.active'));
+        curStep--;
+        $('.meet-add-step.active').removeClass('active');
+        $('.meet-add-step').eq(curStep).removeClass('success').addClass('active');
+        $('.meet-add-content.active').removeClass('active');
+        $('.meet-add-content').eq(curStep).addClass('active');
+        $('html, body').animate({'scrollTop': 0});
+        e.preventDefault();
+    });
+
+    $('body').on('change', '.window-online-date-list input', function(e) {
+        var curIndex = $('.window-online-date-list input').index($('.window-online-date-list input:checked'));
+        $('.window-online-time-content.active').removeClass('active');
+        $('.window-online-time-content').eq(curIndex).addClass('active');
+        $('.window-online-time-container input').prop('checked', false);
+        $('.meet-add-content.active .meet-add-step-ctrl').removeClass('visible');
+    });
+
+    $('body').on('change', '.window-online-time-list input', function(e) {
+        $('.meet-add-content.active .meet-add-step-ctrl').addClass('visible');
+    });
+
+    $('.meet-add-company-wrapper .manager-table-filter .form-input-date input').each(function() {
+        var myDatepicker = $(this).data('datepicker');
+        if (myDatepicker) {
+            myDatepicker.update('onSelect', function(formattedDate, date, inst) {
+                meetAddFilterUpdate();
+            });
+        }
+    });
+
+    $('body').on('change', '.meet-add-company-wrapper .manager-table-filter .form-checkbox input', function(e) {
+        meetAddFilterUpdate();
+    });
+
+    $('body').on('change', '.meet-add-company-wrapper .manager-table-filter .form-input-date input', function(e) {
+        meetAddFilterUpdate();
+    });
+
+    $('.meet-add-company-wrapper .support-search-window form').each(function() {
+        var curForm = $(this);
+        var validator = curForm.validate();
+        validator.destroy();
+        curForm.validate({
+            ignore: '',
+            submitHandler: function(form) {
+                meetAddFilterUpdate();
+            }
+        });
+    });
+
+    $('body').on('click', '.meet-add-company-wrapper .pager a', function(e) {
+        var curLink = $(this);
+        if (!curLink.hasClass('active')) {
+            if (!(curLink.hasClass('pager-prev') && $('.meet-add-company-wrapper .pager-prev').next().hasClass('active')) && !(curLink.hasClass('pager-next') && $('.meet-add-company-wrapper .pager-next').prev().hasClass('active'))) {
+                if (!(curLink.hasClass('pager-prev')) && !(curLink.hasClass('pager-next'))) {
+                    $('.meet-add-company-wrapper .pager a.active').removeClass('active');
+                    curLink.addClass('active');
+                } else if (curLink.hasClass('pager-prev')) {
+                    var curIndex = $('.meet-add-company-wrapper .pager a').index($('.meet-add-company-wrapper .pager a.active'));
+                    $('.meet-add-company-wrapper .pager a.active').removeClass('active');
+                    $('.meet-add-company-wrapper .pager a').eq(curIndex - 1).addClass('active');
+                } else {
+                    var curIndex = $('.meet-add-company-wrapper .pager a').index($('.meet-add-company-wrapper .pager a.active'));
+                    $('.meet-add-company-wrapper .pager a.active').removeClass('active');
+                    $('.meet-add-company-wrapper .pager a').eq(curIndex + 1).addClass('active');
+                }
+                meetAddFilterUpdate();
+            }
+        }
+        e.preventDefault();
+    });
+
+    if ($('.meet-add-company-wrapper').length > 0) {
+        meetAddFilterUpdate();
+    }
+
+    $('body').on('change', '.meet-add-company input', function() {
+        $('.meet-add-content.active .meet-add-step-ctrl').addClass('visible');
+    });
+
 });
+
+function meetAddFilterUpdate() {
+    $('.meet-add-content.active .meet-add-step-ctrl').removeClass('visible');
+    $('.meet-add-company').remove();
+    $('.meet-add-company-wrapper').addClass('loading');
+    $('.meet-add-company-wrapper .message').remove();
+    var filterData = {};
+    if ($('.filter-date-from').val() != '') {
+        filterData['dateFrom'] = $('.filter-date-from').val();
+    }
+    if ($('.filter-date-to').val() != '') {
+        filterData['dateTo'] = $('.filter-date-to').val();
+    }
+    for (var i = 0; i < $('.manager-table-filter .form-checkbox').length; i++) {
+        var curInput = $('.manager-table-filter .form-checkbox').eq(i).find('input');
+        if (curInput.prop('checked')) {
+            filterData[curInput.attr('name')] = 'Y';
+        }
+    }
+    if ($('.support-search-window-input input').val() != '') {
+        filterData[$('.support-search-window-input input').attr('name')] = $('.support-search-window-input input').val();
+    }
+    if ($('.meet-add-company-wrapper .pager a.active').length > 0) {
+        filterData['page'] = 'page-' + $('.meet-add-company-wrapper .pager a.active').html();
+    }
+    $.ajax({
+        type: 'POST',
+        url: $('.meet-add-ctrl').attr('data-url'),
+        dataType: 'json',
+        data: filterData,
+        cache: false,
+        success: function(data) {
+            if (data.status) {
+                $('.meet-add-company-wrapper').removeClass('loading');
+                $('.meet-add-company-wrapper .message').remove();
+                var newHTML = '';
+                var inputName = $('.meet-add-companies').attr('data-inputname');
+                for (var i = 0; i < data.data.list.length; i++) {
+                    var curCompany = data.data.list[i];
+                    newHTML +=  '<label class="meet-add-company">';
+                    newHTML +=  '<input type="radio" name="' + inputName + '" value="' + curCompany.ID + '" />';
+                    newHTML +=  '<div class="meet-add-company-radiobox"></div>';
+                    newHTML +=  '<div class="meet-add-company-info">' +
+                                    '<div class="meet-add-company-info-inner">' +
+                                        '<div class="meet-add-company-logo"><div class="meet-add-company-logo-inner"><img src="' + curCompany.LOGOTYPE_SRC + '" alt="" /></div></div>' +
+                                        '<div class="meet-add-company-text">' +
+                                            '<div class="meet-add-company-title">' + curCompany.NAME + '</div>' +
+                                            '<div class="meet-add-company-brands">' + curCompany.BRANDS + '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
+
+                    newHTML +=  '<div class="meet-add-company-country">';
+                    if (curCompany.COUNTRIES !== undefined) {
+                        for (var j = 0; j < curCompany.COUNTRIES.length; j++) {
+                            newHTML +=  '<div class="catalogue-item-country-item">';
+                            newHTML +=      '<span class="catalogue-item-country-item-hint"><img src="' + curCompany.COUNTRIES[j].FLAG_SRC + '" alt="" /><span class="catalogue-item-country-item-hint-title">' + curCompany.COUNTRIES[j].NAME + '</span></span>';
+                            newHTML +=      '<span class="catalogue-item-country-item-title">' + curCompany.COUNTRIES[j].NAME + '</span>';
+                            if (curCompany.COUNTRIES[j].REGIONS !== undefined) {
+                                for (var k = 0; k < curCompany.COUNTRIES[j].REGIONS.length; k++) {
+                                    if (k == 0) {
+                                        newHTML += '<span class="catalogue-item-country-sep"></span>';
+                                    }
+                                    newHTML += '<span class="catalogue-item-country-region">' + curCompany.COUNTRIES[j].REGIONS[k].SHORT + '<span class="catalogue-item-country-region-title">' + curCompany.COUNTRIES[j].REGIONS[k].FULL + '</span></span>';
+                                }
+                            }
+                            newHTML +=  '</div>';
+                        }
+                    }
+                    newHTML +=  '</div>';
+
+                    newHTML +=  '<div class="meet-add-company-category">';
+                    if (curCompany.CATEGORIES !== undefined) {
+                        for (var j = 0; j < curCompany.CATEGORIES.length; j++) {
+                            newHTML += '<span class="catalogue-item-country-item-hint"><img src="' + curCompany.CATEGORIES[j].ICON_SRC + '" alt="" /><span class="catalogue-item-country-item-hint-title">' + curCompany.CATEGORIES[j].NAME + '</span></span>';
+                        }
+                    }
+                    newHTML +=  '</div>';
+
+                    newHTML +=  '<div class="meet-add-company-source">';
+                    if (curCompany.SOURCE !== undefined) {
+                        for (var j = 0; j < curCompany.SOURCE.length; j++) {
+                            newHTML += '<div class="meet-add-company-source-item">' + curCompany.SOURCE[j].NAME + '</div>';
+                        }
+                    }
+                    newHTML +=  '</div>';
+
+                    newHTML +=  '<div class="meet-add-company-min">';
+                    if (curCompany.ORDER_MIN !== undefined) {
+                        newHTML += curCompany.ORDER_MIN;
+                    }
+                    newHTML +=  '</div>';
+
+                    newHTML +=  '<div class="meet-add-company-props">';
+                    if (curCompany.PROPS !== undefined) {
+                        for (var j = 0; j < curCompany.PROPS.length; j++) {
+                            newHTML +=  '<div class="meet-add-company-prop">';
+                            newHTML +=      '<div class="meet-add-company-prop-icon">' + curCompany.PROPS[j].ICON + '</div>';
+                            newHTML +=      '<div class="meet-add-company-prop-text">' + curCompany.PROPS[j].NAME + '</div>';
+                            newHTML +=  '</div>';
+                        }
+                    }
+                    newHTML +=  '</div>';
+                    newHTML +=  '</label>';
+                }
+                $('.meet-add-companies').append(newHTML);
+
+                var pagerHTML = '';
+                if (data.data.pageCount > 1) {
+                    pagerHTML += '<div class="pager"><a href="#" class="pager-prev"></a>';
+                    var newCurPage = data.data.page.replace('page-', '');
+                    for (var i = 0; i < data.data.pageCount; i++) {
+                        var curPage = i + 1;
+                        if (curPage == newCurPage) {
+                            pagerHTML += '<a href="#" class="active">' + curPage + '</a>';
+                        } else {
+                            pagerHTML += '<a href="#">' + curPage + '</a>';
+                        }
+                    }
+                    pagerHTML += '<a href="#" class="pager-next"></a></div>';
+                }
+                $('.meet-add-company-wrapper .pager').html(pagerHTML);
+            } else {
+                $('.meet-add-company-wrapper').removeClass('loading');
+                $('.meet-add-company-wrapper .message').remove();
+                $('.meet-add-company-wrapper').append('<div class="message message-error"><div class="message-title">Ошибка</div><div class="message-text">' + data.message + '</div></div>');
+            }
+        },
+        error: function() {
+            $('.meet-add-company-wrapper').removeClass('loading');
+            $('.meet-add-company-wrapper .message').remove();
+            $('.meet-add-company-wrapper').append('<div class="message message-error"><div class="message-title">Ошибка</div><div class="message-text">Загрузка данных невозможна</div></div>');
+        }
+    });
+}
+
+function meetAddTimeUpdate() {
+    $('.meet-add-content.active .meet-add-step-ctrl').removeClass('visible');
+    $('.window-online-date-list').html('');
+    $('.window-online-time-container').html('');
+    $('.meet-add-datetime').addClass('loading');
+    $('.meet-add-datetime .message').remove();
+    var filterData = {'company': $('.meet-add-company input:checked').val()};
+    $.ajax({
+        type: 'POST',
+        url: $('.meet-add-datetime').attr('data-url'),
+        dataType: 'json',
+        data: filterData,
+        cache: false,
+        success: function(data) {
+            if (data.status) {
+                $('.meet-add-datetime').removeClass('loading');
+                $('.meet-add-datetime .message').remove();
+                var newHTML = '';
+                var inputName = $('.window-online-date-list').attr('data-inputname');
+                var inputTimeName = $('.window-online-time-container').attr('data-inputname');
+                for (var i = 0; i < data.data.list.length; i++) {
+                    var curDate = data.data.list[i];
+                    newHTML +=  '<label><input type="radio" name="' + inputName + '" value="' + curDate.ID + '" data-datefull="' + curDate.DATE_FULL + '" data-dayfull="' + curDate.DAY_FULL + '" /><span>' + curDate.DATE + '<em>' + curDate.DAY + '</em></span></label>';
+
+                    timeHTML =  '<div class="window-online-time-content">';
+                    timeHTML +=     '<div class="window-online-time-list">';
+                    for (var j = 0; j < curDate.TIME.length; j++) {
+                        var isDisabled = '';
+                        if (curDate.TIME[j].DISABLED !== undefined && curDate.TIME[j].DISABLED) {
+                            isDisabled = ' disabled="disabled"';
+                        }
+                        timeHTML +=     '<label><input type="radio" name="' + inputTimeName + '" value="' + curDate.TIME[j].ID + '" ' + isDisabled + ' data-timefull="' + curDate.TIME[j].NAME_FULL + '" /><span>' + curDate.TIME[j].NAME + '</span></label>';
+                    }
+                    timeHTML +=     '</div>';
+                    timeHTML += '</div>';
+                    $('.window-online-time-container').append(timeHTML);
+                }
+                $('.window-online-date-list').html(newHTML);
+                $('.window-online-date-list label').eq(0).find('input').prop('checked', true).trigger('change');
+            } else {
+                $('.meet-add-datetime').removeClass('loading');
+                $('.meet-add-datetime .message').remove();
+                $('.meet-add-datetime').append('<div class="message message-error"><div class="message-title">Ошибка</div><div class="message-text">' + data.message + '</div></div>');
+            }
+        },
+        error: function() {
+            $('.meet-add-datetime').removeClass('loading');
+            $('.meet-add-datetime .message').remove();
+            $('.meet-add-datetime').append('<div class="message message-error"><div class="message-title">Ошибка</div><div class="message-text">Загрузка данных невозможна</div></div>');
+        }
+    });
+}
+
+function meetAddConfirmUpdate() {
+    var curCompany = $('.meet-add-company input:checked').parents().filter('.meet-add-company');
+    $('.meet-add-confirm-company').html(curCompany.find('.meet-add-company-logo-inner').html() + curCompany.find('.meet-add-company-title').html());
+    $('.meet-add-confirm-date').html($('.window-online-date-list input:checked').attr('data-datefull') + ' <span>' + $('.window-online-date-list input:checked').attr('data-dayfull') + '</span>');
+    $('.meet-add-confirm-time').html($('.window-online-time-list input:checked').attr('data-timefull'));
+    $('.meet-add-confirm-type').html($('.window-online-type input:checked').parent().find('span').html());
+}
+
+function meetAddConfirm() {
+    $('.meet-add-confirm').addClass('loading');
+    $('.meet-add-confirm .message').remove();
+    var filterData = {
+                        'company': $('.meet-add-company input:checked').val(),
+                        'date': $('.window-online-date-list input:checked').val(),
+                        'time': $('.window-online-time-list input:checked').val(),
+                        'type': $('.window-online-type input:checked').val()
+    };
+    $.ajax({
+        type: 'POST',
+        url: $('.meet-add-step-ctrl-submit a').attr('href'),
+        dataType: 'json',
+        data: filterData,
+        cache: false,
+        success: function(data) {
+            if (data.status) {
+                $('.meet-add-container').html('<div class="message message-success"><div class="message-title">Успешно</div><div class="message-text">' + data.message + '</div></div>');
+            } else {
+                $('.meet-add-confirm').removeClass('loading');
+                $('.meet-add-confirm .message').remove();
+                $('.meet-add-confirm').append('<div class="message message-error"><div class="message-title">Ошибка</div><div class="message-text">' + data.message + '</div></div>');
+            }
+        },
+        error: function() {
+            $('.meet-add-confirm').removeClass('loading');
+            $('.meet-add-confirm .message').remove();
+            $('.meet-add-confirm').append('<div class="message message-error"><div class="message-title">Ошибка</div><div class="message-text">Загрузка данных невозможна</div></div>');
+        }
+    });
+}
 
 $(window).on('load resize', function() {
     $('.manager-table-wrapper').each(function() {
