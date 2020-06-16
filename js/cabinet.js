@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    
+    $('.side-menu').mCustomScrollbar({
+        axis: 'y'
+    });
 
     $('.dashboard-zone-dates-item a').click(function(e) {
         var curLi = $(this).parent();
@@ -164,17 +168,38 @@ $(document).ready(function() {
 
     $('.meet-add-step-ctrl-next a').click(function(e) {
         var curStep = $('.meet-add-step').index($('.meet-add-step.active'));
-        curStep++;
-        $('.meet-add-step.active').removeClass('active').addClass('success');
-        $('.meet-add-step').eq(curStep).addClass('active');
-        $('.meet-add-content.active').removeClass('active');
-        $('.meet-add-content').eq(curStep).addClass('active');
-        $('html, body').animate({'scrollTop': 0});
-        if (curStep == 1) {
-            meetAddTimeUpdate();
+        var isValid = true;
+        if (curStep == 0) {
+            if ($('.meet-add-company input:checked').length == 0) {
+                $('.meet-add-company-error').addClass('visible');
+                $('html, body').animate({'scrollTop': 0});
+                isValid = false;
+            } else {
+                $('.meet-add-company-error').removeClass('visible');
+            }
         }
-        if (curStep == 2) {
-            meetAddConfirmUpdate();
+        if (curStep == 1) {
+            if ($('.window-online-time-list input:checked').length == 0) {
+                $('.window-online-time-error').addClass('visible');
+                $('html, body').animate({'scrollTop': $('.window-online-time-error').offset().top - 100});
+                isValid = false;
+            } else {
+                $('.window-online-time-error').removeClass('visible');
+            }
+        }
+        if (isValid) {
+            curStep++;
+            $('.meet-add-step.active').removeClass('active').addClass('success');
+            $('.meet-add-step').eq(curStep).addClass('active');
+            $('.meet-add-content.active').removeClass('active');
+            $('.meet-add-content').eq(curStep).addClass('active');
+            $('html, body').animate({'scrollTop': 0});
+            if (curStep == 1) {
+                meetAddTimeUpdate();
+            }
+            if (curStep == 2) {
+                meetAddConfirmUpdate();
+            }
         }
         e.preventDefault();
     });
@@ -200,11 +225,10 @@ $(document).ready(function() {
         $('.window-online-time-content.active').removeClass('active');
         $('.window-online-time-content').eq(curIndex).addClass('active');
         $('.window-online-time-container input').prop('checked', false);
-        $('.meet-add-content.active .meet-add-step-ctrl').removeClass('visible');
     });
 
     $('body').on('change', '.window-online-time-list input', function(e) {
-        $('.meet-add-content.active .meet-add-step-ctrl').addClass('visible');
+        $('.window-online-time-error').removeClass('visible');
     });
 
     $('.meet-add-company-wrapper .manager-table-filter .form-input-date input').each(function() {
@@ -263,7 +287,11 @@ $(document).ready(function() {
     }
 
     $('body').on('change', '.meet-add-company input', function() {
-        $('.meet-add-content.active .meet-add-step-ctrl').addClass('visible');
+        $('.meet-add-company-error').removeClass('visible');
+    });
+
+    $('body').on('click', '.manager-table-filter-params-window-title', function(e) {
+        $(this).parent().toggleClass('open');
     });
 
 });
@@ -319,7 +347,7 @@ function meetAddFilterUpdate() {
                                     '</div>' +
                                 '</div>';
 
-                    newHTML +=  '<div class="meet-add-company-country">';
+                    newHTML +=  '<div class="meet-add-company-country"><div class="meet-add-company-title-mobile">Страна</div>';
                     if (curCompany.COUNTRIES !== undefined) {
                         for (var j = 0; j < curCompany.COUNTRIES.length; j++) {
                             newHTML +=  '<div class="catalogue-item-country-item">';
@@ -338,7 +366,7 @@ function meetAddFilterUpdate() {
                     }
                     newHTML +=  '</div>';
 
-                    newHTML +=  '<div class="meet-add-company-category">';
+                    newHTML +=  '<div class="meet-add-company-category"><div class="meet-add-company-title-mobile">Категории</div>';
                     if (curCompany.CATEGORIES !== undefined) {
                         for (var j = 0; j < curCompany.CATEGORIES.length; j++) {
                             newHTML += '<span class="catalogue-item-country-item-hint"><img src="' + curCompany.CATEGORIES[j].ICON_SRC + '" alt="" /><span class="catalogue-item-country-item-hint-title">' + curCompany.CATEGORIES[j].NAME + '</span></span>';
@@ -346,7 +374,7 @@ function meetAddFilterUpdate() {
                     }
                     newHTML +=  '</div>';
 
-                    newHTML +=  '<div class="meet-add-company-source">';
+                    newHTML +=  '<div class="meet-add-company-source"><div class="meet-add-company-title-mobile">Сырье</div>';
                     if (curCompany.SOURCE !== undefined) {
                         for (var j = 0; j < curCompany.SOURCE.length; j++) {
                             newHTML += '<div class="meet-add-company-source-item">' + curCompany.SOURCE[j].NAME + '</div>';
@@ -354,7 +382,7 @@ function meetAddFilterUpdate() {
                     }
                     newHTML +=  '</div>';
 
-                    newHTML +=  '<div class="meet-add-company-min">';
+                    newHTML +=  '<div class="meet-add-company-min"><div class="meet-add-company-title-mobile">Минимальный заказ</div>';
                     if (curCompany.ORDER_MIN !== undefined) {
                         newHTML += curCompany.ORDER_MIN;
                     }

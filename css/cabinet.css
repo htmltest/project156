@@ -56,22 +56,20 @@ h1 {margin-top:41px}
     .cabinet::before {display:none}
 }
 
-.side {float:left; width:76px; position:relative; overflow:hidden}
-.side:hover {overflow:visible}
+.side {position:fixed; left:0; top:0; bottom:0; width:77px; overflow:hidden; z-index:100; border-right:1px solid #e3e3e3; background:#fff; transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)}
+.side:hover {width:274px; box-shadow:0px 4px 40px rgba(63, 63, 63, 0.15)}
 
 @media screen and (max-width:1169px) {
     .side {display:none}
 }
 
-.side-menu {position:relative; width:76px; background:#fff; z-index:2; transition:width 0.2s}
-.side:hover .side-menu {width:274px}
-.side-menu::before {content:""; display:block; position:absolute; left:0; top:0; bottom:-9999px; right:-1px; background:#fff; border-right:1px solid #e3e3e3; box-shadow:0px 4px 40px rgba(63, 63, 63, 0.15)}
+.side-menu {position:absolute; left:0; top:81px; bottom:0; right:0; white-space:nowrap; border-top:1px solid #e3e3e3; overflow:auto}
 .side-menu ul {position:relative; margin:0; padding:0; list-style:none; font-size:14px; line-height:55px}
 .side-menu ul li {margin:0; padding:0; position:relative}
 .side-menu ul li::before {display:none}
 .side-menu ul li.sep {border-top:1px solid #cce8f4; margin-top:6px; padding-top:6px}
-.side-menu ul li a {text-decoration:none; display:block; padding:0 0 0 78px; color:rgba(0, 0, 0, 0); height:55px; position:relative; transition:background 0.2s, color 0s 0.2s}
-.side:hover .side-menu ul li a {padding:0 0 0 74px; color:rgba(0, 0, 0, 1)}
+.side-menu ul li a {text-decoration:none; display:block; padding:0 0 0 78px; color:rgba(0, 0, 0, 0); height:55px; position:relative; transition:background 0.2s, color 0.5s ease}
+.side:hover .side-menu ul li a {color:rgba(0, 0, 0, 1)}
 .side-menu ul li.active a,
 .side-menu ul li a:hover {background:#cce8f4}
 .side-menu-icon {display:block; position:absolute; left:20px; top:50%; width:38px; height:38px; margin:-19px 0 0 0; background:#cce8f4; transition:all 0.2s; text-align:center; line-height:38px; border-radius:50%}
@@ -205,6 +203,7 @@ h1 {margin-top:41px}
 .catalogue-item-country-region:hover .catalogue-item-country-region-title {display:block}
 .catalogue-item-country-region-title::before {content:""; display:block; width:14px; height:14px; border-top:1px solid #e2e2e2; border-right:1px solid #e2e2e2; background:#fff; transform:rotate(-135deg); position:absolute; left:-8px; top:50%; margin-top:-7px}
 
+.manager-table-participant-text-countries {display:inline}
 .manager-table-participant-text .catalogue-item-country-item {display:inline-block; vertical-align:middle; font-size:12px; line-height:18px; font-weight:300; color:#313131; margin:0}
 .manager-table-participant-text .catalogue-item-country-item:first-child {margin:0 0 0 8px}
 .manager-table-participant-text .catalogue-item-country-item-title {display:none}
@@ -401,7 +400,7 @@ h1+.meet-card-btns {margin-top:16px}
 .meet-card-manager .contacts-item {display:block; width:377px; margin:14px 0 0 0; padding:0}
 
 @media screen and (max-width:1169px) {
-    .meet-card-manager {float:left; width:100%; margin:30px 0 0 0}
+    .meet-card-manager {float:left; width:100%; margin:52px 0 0 0}
     .meet-card-manager .contacts-item {width:auto; margin:23px 0 0 0}
 }
 
@@ -410,7 +409,7 @@ h1+.meet-card-btns {margin-top:16px}
 .meet-card-company::after {content:""; display:block; clear:both}
 .meet-card-company-logo {float:right; width:calc(100% - 520px); clear:right; line-height:0; padding:8px 0 0 0}
 .meet-card-company-logo img {max-width:382px}
-.meet-card-company-manager {float:right; width:calc(100% - 520px); clear:right; line-height:0; padding:38px 0 0 0}
+.meet-card-company-manager {float:right; width:calc(100% - 520px); clear:right; padding:38px 0 0 0}
 .meet-card-company-manager .contacts-item {padding:20px 0 0 0; width:377px; display:block}
 .meet-card-company-info {float:left; width:457px}
 .meet-card-company-info-title {font-weight:normal; font-size:22px; line-height:33px}
@@ -435,6 +434,19 @@ h1+.meet-card-btns {margin-top:16px}
 .meet-card-company-info-props-communication-title a:hover {border-bottom-color:#008cc9}
 .meet-card-company-info-props-communication-info {margin:8px 0 0 0; color:#737373}
 .meet-card-company-info-props-communication-info span {display:block; color:#000}
+
+@media screen and (max-width:1169px) {
+    .meet-card-company-logo img {max-width:100%}
+    .meet-card-company-manager {float:none; width:auto; padding:0; margin:52px 0 0 0}
+    .meet-card-company-manager .contacts-item {padding:0 0 0 0; width:auto}
+    .meet-card-company-info-props {font-size:20px; line-height:30px}
+    .meet-card-info .meet-card-company-info-props-row {margin:24px 0 0 0}
+    .meet-card-company-info-props-title {float:none; width:auto; color:#717171}
+    .meet-card-company-info-props-value {margin:8px 0 0 0}
+    .meet-card-company-info-props-communication {margin:0 0 0 37px; line-height:30px}
+    .meet-card-company-info-props-communication img {left:-37px; width:27px; top:2px}
+    .meet-card-company-info-props-communication-info span {display:inline; margin:0 0 0 10px}
+}
 
 .meet-card-participant {margin:42px 0 20px 0; position:relative}
 .meet-card-participant::before {content:""; display:block; position:absolute; left:496px; top:0; bottom:0; width:1px; background:#dbdbdb}
@@ -494,7 +506,7 @@ h1+.meet-card-btns {margin-top:16px}
 .cabinet-form .message {margin-right:-170px}
 .wrapper .support-form form {margin-top:-4px}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .cabinet-form .message {margin-right:0}
 }
 
@@ -514,26 +526,11 @@ h1+.meet-card-btns {margin-top:16px}
     .card-details-item-value {margin:3px 0 0 0; font-weight:normal}
 }
 
-.support-header {margin:23px 0 0 0; position:relative}
-.support-header::after {content:""; display:block; clear:both}
-.support-header-btns {float:left}
-.support-header-btn {float:left; margin:0 0 0 27px}
-.support-header-btn:first-child {margin:0}
-.support-header-btn .btn {padding:0 20px}
-.support-header-btn .btn img {vertical-align:middle; margin:-2px 10px 0 0}
-
-@media screen and (max-width:1199px) {
-    .support-header {margin:25px 0 0 0}
-    .support-header-btn .btn {height:53px; line-height:53px; font-size:17px; width:auto}
-    .support-header-btn .support-header-btn-add {width:53px; height:53px; padding:0; background-image:url(../images/support-header-btn-add-mobile.svg); background-repeat:no-repeat; background-position:center; font-size:0; line-height:0; letter-spacing:-1px}
-    .support-header-btn .support-header-btn-add img {display:none}
-}
-
 .btn-archive {display:block; height:41px; text-decoration:none; padding:0 18px 0 21px; line-height:41px; font-weight:normal; font-size:12px; color:#000; border:1px solid #d0d0d0; background:#fff; position:relative; text-align:center; text-transform:uppercase; letter-spacing:0.05em}
 .btn-archive:hover {border-color:#7c7c7c; color:#000}
 .btn-archive img {display:inline-block; vertical-align:middle; margin:-2px 10px 0 0}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .btn-archive {width:53px; height:53px; padding:0; line-height:51px; font-size:0; letter-spacing:-1px}
     .btn-archive img {margin:-2px 0 0 0; width:29px}
 }
@@ -545,7 +542,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-search-link path {fill:#636363; opacity:0.8; transition:all 0.2s}
 .support-search-link:hover path {fill:#7c7c7c; opacity:1}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-search {float:none; margin:0; position:absolute; right:0; top:15px}
     .support-search-open .support-search {position:static}
     .support-search-open .support-search-inner {position:static}
@@ -561,7 +558,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-search-window-input input {font-family:Lato, sans-serif}
 .support-search-window-input label.error {display:none !important}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-search-open .support-search-window {position:absolute; left:0; right:0; width:auto; top:0; background:none}
     .wrapper .support-search-window form {padding:0; margin:0}
     .support-search-window-input input {font-size:20px; line-height:30px; padding:0 34px 16px 0; height:47px; border-bottom-color:#c4c4c4; font-weight:normal; background:none; color:#000}
@@ -579,7 +576,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-search-window-submit button path {fill:#636363; opacity:0.8; transition:all 0.2s}
 .support-search-window-submit button:hover path {fill:#7c7c7c; opacity:1}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-search-window-submit {top:9px}
     .support-search-window-submit button {width:16px; height:16px; background:url(../images/support-search-mobile.svg) no-repeat}
     .support-search-window-submit button svg {display:none}
@@ -592,7 +589,7 @@ h1+.meet-card-btns {margin-top:16px}
 .card-item.active::before {content:""; display:block; position:absolute; left:-1px; top:0; bottom:0; width:7px; background:#cce8f4}
 .card-item-inner {display:table; width:100%; table-layout:fixed; border-collapse:collapse}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-list {margin:49px 0 25px 0}
     .card-item:hover {z-index:2}
     .card-item-inner {display:block; width:auto; position:relative; padding:0 45px 0 0}
@@ -601,7 +598,7 @@ h1+.meet-card-btns {margin-top:16px}
 
 .card-item-content {display:table-cell; width:100%; vertical-align:top; padding:15px 30px 15px 25px}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-content {display:block; width:auto; padding:22px 10px 21px 20px}
     .card-item-status+.card-item-content {margin-left:64px}
 }
@@ -610,19 +607,19 @@ h1+.meet-card-btns {margin-top:16px}
 .card-item-title a {text-decoration:none}
 .card-item-title a:hover {text-decoration:underline}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-title {font-size:18px; line-height:27px; width:auto; white-space:normal}
 }
 
 .card-item-post {white-space:nowrap; position:relative; width:100%; overflow:hidden; text-overflow:ellipsis; font-weight:14px; line-height:21px; font-weight:normal; color:#8e8e8e}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-post {font-size:18px; line-height:27px}
 }
 
 .card-item-date {margin:8px 0 0 0; font-size:13px; line-height:19px; color:rgba(114, 114, 114, 0.8); padding:0 0 0 25px; background:url(../images/card-item-date.svg) no-repeat left 1px; font-weight:normal}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-date {margin:11px 0 27px 0; font-size:18px; line-height:27px; float:left; padding:0 0 0 28px; background:url(../images/card-item-date-mobile.svg) no-repeat left 3px}
 }
 
@@ -630,7 +627,7 @@ h1+.meet-card-btns {margin-top:16px}
 .card-item-status-inner {width:34px; height:34px; background:#beb2b2; border:10px solid #f9f8f8; border-radius:50%}
 .card-item-status-inner.active {background:#31ed5b; border-color:#ebfeef}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-status {display:block; float:left; width:44px; padding:0; margin:25px 0 0 20px}
     .card-item-status-inner {width:44px; height:44px; border-width:13px}
 }
@@ -638,7 +635,7 @@ h1+.meet-card-btns {margin-top:16px}
 .card-item-answer {display:table-cell; width:79px; text-align:center; vertical-align:top; padding:30px 0 0 0}
 .card-item-answer span {display:block; height:19px; background:#a0faaf; color:#1d1d1d; font-weight:normal; font-size:14px; line-height:19px}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-answer {display:block; padding:0; float:left; margin:-9px 0 0 31px; width:106px; position:relative}
     .card-item-answer::before {content:""; display:block; width:4px; height:4px; background:#c4c4c4; border-radius:50%; position:absolute; left:-19px; top:50%; margin-top:-2px}
     .card-item-answer span {height:22px; font-size:18px; line-height:22px}
@@ -660,7 +657,7 @@ h1+.meet-card-btns {margin-top:16px}
 }
 .card-item-menu-list ul li a span {display:block; position:absolute; left:9px; width:40px; top:50%; transform:translateY(-50%); text-align:center; line-height:0}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .card-item-menu {display:block; position:absolute; right:0; top:50%; transform:translateY(-50%); width:45px; padding:0}
     .card-item-menu.open {position:fixed; left:0; bottom:0; top:0; transform:none; width:auto; background:rgba(41, 41, 41, 0.6); z-index:99999}
     .card-item-menu-container {width:45px}
@@ -682,7 +679,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-form-file .form-file-input {float:none}
 .support-form-file .form-file-name {margin:0}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-form-bottom {margin:38px 0 0 0}
     .support-form-file {float:none; width:auto; margin:0}
     .support-form-file .form-file-input {width:299px}
@@ -711,7 +708,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-message-files .doc-link a:hover {text-decoration:underline}
 .support-message-files .doc-link a span {font-weight:300}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-messages {margin:70px -20px 0 -20px; border-top:1px solid #d9d9d9; padding:20px 20px 0 20px}
     .support-message {margin:20px 0 0 0; padding:25px 25px 38px 25px; border:1px solid #dadada}
     .support-message::before {content:""; display:block; position:absolute; left:-1px; top:-1px; bottom:-1px; width:8px; background:#cce8f4}
@@ -731,7 +728,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-messages-success-btn .btn {padding:0 20px}
 .support-messages-success-btn .btn img {vertical-align:middle; margin:-2px 10px 0 0}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-messages-success {width:auto; margin:40px 0; padding:34px 58px 50px 58px; text-align:center}
     .support-messages-success-text {float:none; width:auto; font-size:20px; line-height:30px}
     .support-messages-success-btn {float:none; margin:25px 0 0 0}
@@ -747,7 +744,7 @@ h1+.meet-card-btns {margin-top:16px}
 .b-place-big-buy a {display:inline; text-decoration:underline; color:#070707}
 .b-place-big-buy a:hover {text-decoration:none}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .b-place-big:last-child {margin:40px 0 0 0}
     .b-place-big img {display:none}
     .b-place-big img.b-place-big-mobile {display:block}
@@ -772,14 +769,37 @@ h1+.meet-card-btns {margin-top:16px}
 .manager-table-filter-param svg {display:block; position:absolute; left:5px; top:5px}
 .manager-table-filter-param path {stroke:#545454}
 
+@media screen and (max-width:1169px) {
+    .manager-table-ctrl {margin:0; background:none; height:auto; border-radius:0; padding:0; box-shadow:none}
+    .manager-table-filter {float:none; max-width:none; padding:0}
+    .manager-table-filter-link {float:none; display:block; width:172px; height:50px; font-size:20px; background:rgba(255, 255, 255, 0.55); line-height:48px; border-color:rgba(208, 208, 208, 0.55)}
+    .manager-table-filter-link::before {background-size:100%; width:16px; height:15px; margin:-2px 8px 0 0}
+    .manager-table-filter-params {float:none; margin:10px 0 0 -10px; max-width:none; white-space:normal}
+    .manager-table-filter-param {margin:10px 0 0 10px; height:34px; background:#fff; border-radius:2px; padding:0 42px 0 10px; font-size:18px; line-height:34px}
+    .manager-table-filter-param span {right:10px; top:5px; border-radius:50%; width:23px; height:23px; background:#f0f0f0}
+    .manager-table-filter-param svg {left:6px; top:6px; width:11px; height:11px}
+    .manager-table-fitler-open .manager-table-filter-param {display:none}
+}
+
 .manager-table-filter-params-window {display:none; position:absolute; left:0; top:100%; margin-top:-2px; width:400px; padding:31px 0 38px 31px; background:#fff; border:1px solid #eaeaea; box-shadow:0px 10px 45px rgba(38, 38, 38, 0.1); border-radius:2px; z-index:10}
 .manager-table-fitler-open .manager-table-filter-params-window {display:block}
 .wrapper .manager-table-filter-params-window form {margin:0; padding:0; position:relative}
 .wrapper .manager-table-filter-params-window form::before {content:""; display:block; position:absolute; left:160px; top:0; bottom:0; width:1px; background:#c4c4c4; opacity:0.4}
 .wrapper .manager-table-filter-params-window form::after {content:""; display:block; clear:both}
 
+@media screen and (max-width:1169px) {
+    .manager-table-filter-params-window {position:relative; left:auto; top:auto; margin:30px 0; width:auto; padding:0; box-shadow:none; border-radius:0; z-index:10; border:none; border-top:1px solid #cfcfcf}
+    .wrapper .manager-table-filter-params-window form::before {display:none}
+}
+
 .manager-table-filter-params-window-dates {float:left; width:189px; margin:-5px 0 0 0}
 .manager-table-filter-params-window-props {float:left; width:157px; margin:-5px 0 0 0}
+
+@media screen and (max-width:1169px) {
+    .manager-table-filter-params-window-dates {float:none; width:auto; border-top:1px solid #cfcfcf; padding:0 20px}
+    .manager-table-filter-params-window-dates::after {content:""; display:block; clear:both}
+    .manager-table-filter-params-window-props {float:none; width:auto; margin:0; border-top:1px solid #cfcfcf}
+}
 
 .manager-table-filter-params-window-title {font-weight:normal; color:#1d1d1d}
 .manager-table-filter-params-window-title .manager-table-filter-params-window-title-values {display:none}
@@ -792,8 +812,36 @@ h1+.meet-card-btns {margin-top:16px}
 .manager-table-filter-params-window-date-field .form-input input {border:1px solid rgba(208, 208, 208, 0.55); font-size:13px; line-height:28px; color:#404040; padding:0 0 0 9px; text-align:left; height:30px; border-radius:4px}
 .manager-table-filter-params-window-date-field .form-input-date::after {opacity:0.6; right:13px; top:8px; width:15px; height:13px; background:url(../images/input-date-mobile.svg) no-repeat}
 
+@media screen and (max-width:1169px) {
+    .manager-table-filter-params-window-title {font-size:20px; line-height:56px; background:#f5f5f5; color:#000; padding:0 69px 0 20px; position:relative; border-bottom:1px solid #e3e3e3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer}
+    .manager-table-filter-params-window-title::after {content:""; display:block; width:17px; height:11px; position:absolute; right:26px; top:50%; margin-top:-6px; background:url(../images/press-filter-params-window-title.svg) no-repeat}
+    .open .manager-table-filter-params-window-title::after {transform:rotate(180deg)}
+    .manager-table-filter-params-window-dates .manager-table-filter-params-window-title {margin:0 -20px; border-bottom:none}
+    .manager-table-filter-params-window-dates.open .manager-table-filter-params-window-title {margin-bottom:20px; border-bottom:1px solid #e3e3e3}
+    .manager-table-filter-params-window-title .manager-table-filter-params-window-title-values {display:inline; font-size:18px; line-height:27px; font-weight:300; margin:0 0 0 9px}
+}
+
 .manager-table-filter-params-window-props-list {margin:10px 0 0 0}
 .manager-table-filter-params-window-props-list .form-checkbox {margin:8px 0 0 0}
+
+@media screen and (max-width:1169px) {
+    .manager-table-filter-params-window-date {float:left; margin:0 0 20px 0; display:none}
+    .manager-table-filter-params-window-dates.open .manager-table-filter-params-window-date {display:block}
+    .manager-table-filter-params-window-date+.manager-table-filter-params-window-date {float:right}
+    .manager-table-filter-params-window-date-title {width:auto; margin:0 10px 0 0; font-size:20px; line-height:50px}
+    .manager-table-filter-params-window-date-field {width:170px}
+    .manager-table-filter-params-window-date-field .form-input input {font-size:20px; line-height:48px; height:50px}
+    .manager-table-filter-params-window-date-field .form-input-date::after {top:16px; width:18px; height:16px; background-size:100%}
+}
+
+@media screen and (max-width:1169px) {
+    .manager-table-filter-params-window-props-list {margin:0; display:none}
+    .open .manager-table-filter-params-window-props-list {display:block}
+    .manager-table-filter-params-window-props-list .form-checkbox {margin:0; border-bottom:1px solid #e3e3e3}
+    .manager-table-filter-params-window-props-list .form-checkbox label {float:none; display:block}
+    .manager-table-filter-params-window-props-list .form-checkbox span {font-size:18px; line-height:27px; padding:13px 68px 16px 20px}
+    .manager-table-filter-params-window-props-list .form-checkbox span::before {right:20px; top:13px; left:auto}
+}
 
 .manager-table-action {float:right; margin:0 0 0 30px}
 .manager-table-action-btn {float:left; margin:0 0 0 17px}
@@ -806,6 +854,14 @@ h1+.meet-card-btns {margin-top:16px}
 .manager-table-search-link svg {display:block}
 .manager-table-search-link path {fill:#636363; opacity:0.8; transition:all 0.2s}
 .manager-table-search-link:hover path {fill:#008cc9; opacity:1}
+
+@media screen and (max-width:1169px) {
+    .manager-table-search {float:none; margin:0; position:absolute; right:0; top:11px}
+    .manager-table-search-open .manager-table-search {position:static}
+    .manager-table-search-link svg {width:23px; height:23px}
+    .manager-table-search-open .manager-table-ctrl {padding-top:77px}
+    .manager-table-search-open .manager-table-search-link {display:none}
+}
 
 .manager-table-container {position:relative}
 .tabs-content-inner > .manager-table-container:first-child {margin:16px 0 0 0}
@@ -889,6 +945,73 @@ h1+.meet-card-btns {margin-top:16px}
 .manager-table-section-detail-info-value {margin:0 0 0 149px}
 .manager-table-section-detail-info-value span {display:block; margin:2px 0 0 0}
 
+@media screen and (max-width:1169px) {
+    .manager-table-container {position:relative}
+    .tabs-content-inner > .manager-table-container:first-child {margin:0}
+    .manager-table-wrapper {overflow:visible}
+    .manager-table {display:block; border-bottom:none; white-space:normal; width:auto; margin:0 -20px}
+    .manager-table-header {display:none}
+    .manager-table-row {display:block}
+    .manager-table-cell {display:block; border-top:none; padding:0}
+    .manager-table-cell:first-child {padding-left:0}
+    .manager-table-fixed {display:none}
+    .manager-table-arrow-right {display:none}
+    .manager-table-arrow-left {display:none}
+    .manager-table-cell-fixed {visibility:visible}
+    
+    .manager-table-delegates .manager-table-row {border-bottom:1px solid #d8d8d8; border-top:8px solid #d6e0e4; padding:0 0 20px 0; position:relative}
+    .manager-table-delegates .manager-table-row::after {content:""; display:block; clear:both}
+    .manager-table-delegates .manager-table-events-title {background:#f6f8f9; font-weight:normal; font-size:20px; line-height:30px; color:#171717; padding:20px 20px 24px 64px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .manager-table-delegates .manager-table-cell-active+.manager-table-events-title {padding:20px 20px 24px 64px}
+    .manager-table-delegates .manager-table-cell-active {position:absolute; left:20px; top:19px; width:34px; padding:0}
+    .manager-table-delegates .manager-table-cell-active-inner {width:34px; height:34px; margin:0}
+    .manager-table-delegates .manager-table-cell-active-inner::before {width:14px; height:14px; left:10px; top:10px}
+    .manager-table-delegates .manager-table-events-type {float:left; margin:20px 0 0 20px}
+    .manager-table-delegates .manager-table-events-type+.manager-table-events-type {padding:0 0 0 20px; border-left:1px solid #c4c4c4; margin:20px 20px 0 20px}
+    .manager-table-delegates .manager-table-events-type+.manager-table-events-type+.manager-table-events-type {width:100%; margin:20px 20px 0 20px; padding:0; border-left:none}
+    .manager-table-delegates .manager-table-cell-action {float:left; width:100%; position:relative; margin:17px 0 0 0; padding:20px 0 0 0; text-align:center; direction:rtl}
+    .manager-table-delegates .manager-table-cell-action::before {content:""; display:block; position:absolute; left:20px; top:0; right:20px; height:1px; background:#008cc9}
+    .manager-table-delegates .manager-table-cell-action a {width:53px; height:53px; line-height:53px; margin:0 5px}
+    .manager-table-delegates .manager-table-cell-action a img {height:22px}
+    
+    .manager-table-support .manager-table-row {border-bottom:1px solid #d8d8d8; border-top:8px solid #d6e0e4; padding:0 0 20px 0; position:relative}
+    .manager-table-support .manager-table-row::after {content:""; display:block; clear:both}
+    .manager-table-support .manager-table-events-title {background:#f6f8f9; font-weight:normal; font-size:20px; line-height:30px; color:#171717; padding:20px 20px 24px 64px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .manager-table-support .manager-table-cell-active+.manager-table-events-title {padding:20px 20px 24px 64px}
+    .manager-table-support .manager-table-cell-active {position:absolute; left:20px; top:19px; width:34px; padding:0}
+    .manager-table-support .manager-table-cell-active-inner {width:34px; height:34px; margin:0}
+    .manager-table-support .manager-table-cell-active-inner::before {width:14px; height:14px; left:10px; top:10px}
+    .manager-table-support .manager-table-events-type {float:left; margin:20px 0 0 20px}
+    .manager-table-support .manager-table-events-type+.manager-table-events-type {padding:0 0 0 20px; border-left:1px solid #c4c4c4; margin:20px 20px 0 20px}
+    .manager-table-support .manager-table-events-type+.manager-table-events-type+.manager-table-events-type {width:100%; margin:20px 20px 0 20px; padding:0; border-left:none}
+    .manager-table-support .manager-table-cell-action {float:left; width:100%; position:relative; margin:17px 0 0 0; padding:20px 0 0 0; text-align:center; direction:rtl}
+    .manager-table-support .manager-table-cell-action::before {content:""; display:block; position:absolute; left:20px; top:0; right:20px; height:1px; background:#008cc9}
+    .manager-table-support .manager-table-cell-action a {width:53px; height:53px; line-height:53px; margin:0 5px}
+    .manager-table-support .manager-table-cell-action a img {height:22px}
+
+    .manager-table-faq .manager-table {border-top:1px solid #d8d8d8; margin:25px -20px 0 -20px}
+    .manager-table-faq .manager-table-row {border-bottom:1px solid #d8d8d8; padding:20px; position:relative}
+    .manager-table-faq .manager-table-row::after {content:""; display:block; clear:both}
+    .manager-table-faq .manager-table-cell-faq-company {display:block}
+    .manager-table-faq .manager-table-cell-faq-company::after {content:""; display:block; clear:both}
+    .manager-table-faq .manager-table-cell-faq-company-logo {display:block; float:left; width:114px; text-align:left}
+    .manager-table-faq .manager-table-cell-faq-company-logo img {max-width:114px}
+    .manager-table-faq .manager-table-cell-faq-company-info {display:block; float:right; padding:0; width:calc(100% - 134px)}
+    .manager-table-faq .manager-table-participant-name {margin:0; font-size:20px; line-height:30px; font-weight:normal}
+    .manager-table-faq .manager-table-participant-name svg {width:20px; height:20px}
+    .manager-table-faq .manager-table-participant-text-brands {display:block; font-size:18px; line-height:27px}
+    .manager-table-faq .manager-table-participant-text-countries {display:block; margin:26px 0 0 -134px}
+    .manager-table-faq .catalogue-item-country-item {display:inline-block; vertical-align:middle; margin:0 0 0 12px; font-size:18px; color:#000; font-weight:300}
+    .manager-table-faq .manager-table-participant-text .catalogue-item-country-item:first-child {margin:0}
+    .manager-table-faq .catalogue-item-country-item-title {display:none}
+    .manager-table-faq .catalogue-item-country-item img {height:27px; margin:0}
+    .manager-table-faq .catalogue-item-country-sep {display:none}
+    .manager-table-faq .catalogue-item-country-region {height:27px; padding:0 9px; border:1px solid #afd9eb; border-radius:2px; line-height:27px; margin:0 0 0 5px}
+    .manager-table-faq .manager-table-events-type {float:left; margin:20px 0 0 0; font-size:20px; line-height:30px}
+    .manager-table-faq .manager-table-events-type+.manager-table-events-type {margin:20px 0 0 20px}
+    .manager-table-faq .manager-table-support-answer {display:block; position:absolute; right:20px; bottom:29px; font-size:16px; line-height:22px; height:22px; padding:0 8px}
+}
+
 .manager-table-section-detail-window {position:absolute; background:#fff; border:1px solid #e6e6e6; padding:16px 20px 19px 20px; box-shadow:6px 6px 40px rgba(185, 185, 185, 0.25); margin:-5px 0 0 -62px; transform:translateY(-100%); pointer-events:none}
 .manager-table-section-detail-window::before {content:""; display:block; width:21px; height:21px; background:#fff; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; transform:rotate(45deg); position:absolute; left:62px; bottom:-11px}
 
@@ -946,17 +1069,36 @@ h1+.meet-card-btns {margin-top:16px}
 .manager-table-events-status-2::before {background:#ffcccc}
 
 .manager-table-events-type {font-size:14px; line-height:21px}
+.manager-table-events-type-mobile-title {display:none}
 .manager-table-events-count {font-size:15px; font-weight:600; line-height:23px; color:#313131}
 .manager-table-events-count span {font-weight:300; font-size:13px; margin:0 0 0 5px}
 
+@media screen and (max-width:1169px) {
+    .manager-table-events-type {font-size:18px; line-height:27px}
+    .manager-table-events-type-mobile-title {display:block; font-weight:normal; font-size:15px; line-height:23px; color:#81a2b0; letter-spacing:0.03em; text-transform:uppercase; margin:0 0 3px 0}
+}
+
 .manager-table-support-answer {display:inline-block; vertical-align:middle; font-weight:14px; font-weight:normal; color:#1d1d1d; padding:0 5px; height:19px; line-height:19px; background:#a0faaf; margin:-2px 0 0 22px}
 .manager-table-events-type .manager-table-support-answer {margin:0}
+.manager-table-support-answer-mobile {display:none}
+
+@media screen and (max-width:1169px) {
+    .manager-table-support-answer {display:none}
+    .manager-table-support-answer-mobile {display:block; float:left; margin:10px 0 -6px 20px; font-weight:16px; font-weight:normal; color:#1d1d1d; padding:0 8px; height:22px; line-height:22px; background:#a0faaf}
+    .manager-table-support-answer-mobile+.manager-table-events-type {clear:left}
+}
 
 .manager-table-faq-count {font-size:15px; line-height:23px; font-weight:normal; color:#313131}
 .manager-table-faq-count-sep {font-size:15px; line-height:23px; font-weight:normal; color:#bdbdbd; margin:0 4px 0 5px}
 .manager-table-faq-count-details {font-size:13px; line-height:23px; font-weight:normal; color:#222}
 .manager-table-faq-count-details-success {color:#1aa920}
 .manager-table-faq-count-details-fail {color:#cd4f57}
+
+@media screen and (max-width:1169px) {
+    .manager-table-faq-count {font-size:20px; line-height:30px}
+    .manager-table-faq-count-sep {font-size:18px; line-height:27px}
+    .manager-table-faq-count-details {font-size:17px; line-height:26px}
+}
 
 .faq-list {margin:30px 0 0 0; border-top:1px solid #d2d2d2}
 .faq-item {border-bottom:1px solid #d2d2d2}
@@ -982,6 +1124,10 @@ h1+.meet-card-btns {margin-top:16px}
 .faq-list-add .btn::before {display:none}
 .faq-list-add .btn img {display:inline-block; vertical-align:middle; margin:-2px 8px 0 0}
 
+@media screen and (max-width:1169px) {
+    .faq-list-add .btn {width:auto; height:53px; line-height:53px; display:inline-block; font-size:17px; padding:0 30px}
+}
+
 .support-header {margin:23px 0 40px 0; position:relative}
 .support-header::after {content:""; display:block; clear:both}
 .support-header-btns {float:left}
@@ -990,10 +1136,10 @@ h1+.meet-card-btns {margin-top:16px}
 .support-header-btn .btn {padding:0 20px}
 .support-header-btn .btn img {vertical-align:middle; margin:-2px 10px 0 0}
 
-@media screen and (max-width:1199px) {
-    .support-header {margin:25px 0 0 0}
+@media screen and (max-width:1169px) {
+    .support-header {margin:25px 0 45px 0}
     .support-header-btn .btn {height:53px; line-height:53px; font-size:17px; width:auto}
-    .support-header-btn .support-header-btn-add {width:53px; height:53px; padding:0; background-image:url(../images/support-header-btn-add-mobile.svg); background-repeat:no-repeat; background-position:center; font-size:0; line-height:0; letter-spacing:-1px}
+    .support-header-btn .support-header-btn-add {width:53px; height:53px; padding:0; background-image:url(../images/support-header-btn-add-mobile.svg); background-repeat:no-repeat; background-position:center; font-size:0; line-height:0; letter-spacing:-1px; position:relative}
     .support-header-btn .support-header-btn-add img {display:none}
 }
 
@@ -1001,7 +1147,7 @@ h1+.meet-card-btns {margin-top:16px}
 .btn-archive:hover {border-color:#7c7c7c; color:#000}
 .btn-archive img {display:inline-block; vertical-align:middle; margin:-2px 10px 0 0}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .btn-archive {width:53px; height:53px; padding:0; line-height:51px; font-size:0; letter-spacing:-1px}
     .btn-archive img {margin:-2px 0 0 0; width:29px}
 }
@@ -1013,7 +1159,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-search-link path {fill:#636363; opacity:0.8; transition:all 0.2s}
 .support-search-link:hover path {fill:#7c7c7c; opacity:1}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-search {float:none; margin:0; position:absolute; right:0; top:15px}
     .support-search-open .support-search {position:static}
     .support-search-open .support-search-inner {position:static}
@@ -1029,7 +1175,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-search-window-input input {font-family:Lato, sans-serif}
 .support-search-window-input label.error {display:none !important}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-search-open .support-search-window {position:absolute; left:0; right:0; width:auto; top:0; background:none}
     .wrapper .support-search-window form {padding:0; margin:0}
     .support-search-window-input input {font-size:20px; line-height:30px; padding:0 34px 16px 0; height:47px; border-bottom-color:#c4c4c4; font-weight:normal; background:none; color:#000}
@@ -1047,7 +1193,7 @@ h1+.meet-card-btns {margin-top:16px}
 .support-search-window-submit button path {fill:#636363; opacity:0.8; transition:all 0.2s}
 .support-search-window-submit button:hover path {fill:#7c7c7c; opacity:1}
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1169px) {
     .support-search-window-submit {top:9px}
     .support-search-window-submit button {width:16px; height:16px; background:url(../images/support-search-mobile.svg) no-repeat}
     .support-search-window-submit button svg {display:none}
@@ -1068,8 +1214,17 @@ h1+.meet-card-btns {margin-top:16px}
 .meet-add-step.success .meet-add-step-inner span::after {border-left-color:#eaf9e2}
 .navigator-filter-block-menu-all+.navigator-filter-block-menu-item a span {padding-left:54px}
 .meet-add-step-inner strong {display:block; position:absolute; left:40px; top:50%; width:24px; height:24px; margin-top:-12px; background:#fff; border-radius:50%; text-align:center; font-weight:normal; font-size:16px; line-height:24px; color:#171717}
-.meet-add-step:first-child .meet-add-step-inner a strong {left:20px}
 .meet-add-step.success .meet-add-step-inner strong {font-size:0; color:transparent; background:#fff url(../images/meet-add-step-success.svg) no-repeat center}
+
+@media screen and (max-width:1169px) {
+    .meet-add-steps {margin:25px 0 0 0}
+    .meet-add-step {margin:0 0 0 -7px; padding:0 13px 0 0}
+    .meet-add-step-inner span {padding:0 75px 0 55px; height:72px; font-size:0}
+    .meet-add-step-inner span::before {border-left-width:29px; border-top-width:36px; border-bottom-width:36px}
+    .meet-add-step-inner span::after {right:-29px; border-left-width:29px; border-top-width:36px; border-bottom-width:36px}
+    .meet-add-step-inner strong {left:60px; width:32px; height:32px; margin-top:-16px; font-size:20px; line-height:34px}
+    .meet-add-step:first-child .meet-add-step-inner strong {left:50px}
+}
 
 .meet-add-container {position:relative}
 .meet-add-container form {margin:0; padding:0}
@@ -1116,19 +1271,63 @@ h1+.meet-card-btns {margin-top:16px}
 .meet-add-company-prop:hover .meet-add-company-prop-text {display:block}
 .meet-add-company-prop-text::before {content:""; display:block; width:14px; height:14px; border-top:1px solid #e2e2e2; border-right:1px solid #e2e2e2; background:#fff; transform:rotate(45deg); position:absolute; right:-8px; top:50%; margin-top:-7px}
 .meet-add-company-prop-text strong {font-weight:bold}
+.meet-add-company-title-mobile {display:none}
+
+@media screen and (max-width:1169px) {
+    .meet-add-companies {display:block; margin:30px 0 0 0; width:auto; border-bottom:1px solid #d6d6d6}
+    .meet-add-companies-headers {display:none}
+    .meet-add-company {display:block; border-top:1px solid #d6d6d6; position:relative; padding:20px 0}
+    .meet-add-company::after {content:""; display:block; clear:both}
+    .meet-add-company-radiobox {display:block; position:absolute; right:0; top:20px; width:auto; border:none}
+    .meet-add-company input:checked+.meet-add-company-radiobox::after {display:none}
+    .meet-add-company input:checked+.meet-add-company-radiobox::before {width:29px; height:29px; background-size:100%}
+    .meet-add-company-info {display:block; width:100%; padding:0; border:none}
+    .meet-add-company input:checked+.meet-add-company-radiobox+.meet-add-company-info::after {display:none}
+    .meet-add-company-logo {width:164px}
+    .meet-add-company-logo-inner {border:1px solid #e8e8e8; padding:5px; text-align:center; line-height:83px; height:95px; width:auto; display:block; vertical-align:middle}
+    .meet-add-company-logo-inner img {display:inline-block; max-width:152px; max-height:83px; vertical-align:middle}
+    .meet-add-company-text {padding:0 0 0 20px}
+    .meet-add-company-title {font-weight:normal; font-size:20px; line-height:30px}
+    .meet-add-company-brands {font-size:18px; line-height:27px}
+    .meet-add-company-category {display:block; width:auto; padding:20px 0 0 0; border:none; font-size:18px; line-height:27px}
+    .meet-add-company input:checked+.meet-add-company-radiobox+.meet-add-company-info+.meet-add-company-country+.meet-add-company-category::after {display:none}
+    .meet-add-company-country {display:block; width:auto; padding:20px 0 0 0; border:none; font-size:18px; line-height:27px}
+    .meet-add-company input:checked+.meet-add-company-radiobox+.meet-add-company-info+.meet-add-company-country::after {display:none}
+    .meet-add-company-source {display:block; width:auto; padding:20px 0 0 0; border:none; font-size:18px; line-height:27px}
+    .meet-add-company input:checked+.meet-add-company-radiobox+.meet-add-company-info+.meet-add-company-country+.meet-add-company-category+.meet-add-company-source::after {display:none}
+    .meet-add-company-title-mobile {display:block; font-size:15px; line-height:23px; letter-spacing:0.03em; text-transform:uppercase; color:#81a2b0}
+    .meet-add-company-min {display:block; width:auto; padding:20px 0 0 0; border:none; font-size:18px; line-height:27px}
+    .meet-add-company input:checked+.meet-add-company-radiobox+.meet-add-company-info+.meet-add-company-country+.meet-add-company-category+.meet-add-company-source+.meet-add-company-min::after {display:none}
+    .meet-add-company-props {display:block; width:auto; padding:0; border:none; position:absolute; right:0; bottom:18px}
+    .meet-add-company input:checked+.meet-add-company-radiobox+.meet-add-company-info+.meet-add-company-country+.meet-add-company-category+.meet-add-company-source+.meet-add-company-min+.meet-add-company-props::after {display:none}
+    .meet-add-company-prop-icon {width:44px; height:44px; line-height:44px; font-size:18px}
+    .meet-add-company-prop-icon img {height:18px}
+}
 
 .meet-add-ctrl {margin:40px 0 0 0; border-top:1px solid #e3e3e3; padding:29px 0 0 0}
 .meet-add-ctrl::after {content:""; display:block; clear:both}
 .meet-add-ctrl .support-search {margin:9px 0 0 0}
 
-.meet-add-step-ctrl {margin:70px 0 0 0; border-top:1px solid #e3e3e3; padding:40px 0 0 0}
+@media screen and (max-width:1169px) {
+    .support-search-open .meet-add-ctrl {padding-top:76px}
+}
+
+.meet-add-step-ctrl {margin:70px 0 0 0; border-top:1px solid #e3e3e3; padding:40px 0 0 0; max-width:1000px}
 .meet-add-step-ctrl::after {content:""; display:block; clear:both}
-.meet-add-step-ctrl-next {float:right; display:none; margin:0 0 0 40px}
-.meet-add-step-ctrl.visible .meet-add-step-ctrl-next {display:block}
+.meet-add-step-ctrl-next {float:right; margin:0 0 0 40px}
 .meet-add-step-ctrl-submit {float:right; margin:0 0 0 40px}
 .meet-add-step-ctrl-back {float:right; font-size:14px; line-height:41px; font-weight:normal}
 .meet-add-step-ctrl-back a {color:#494949; text-decoration:none}
 .meet-add-step-ctrl-back a:hover {text-decoration:underline}
+
+@media screen and (max-width:1169px) {
+    .meet-add-step-ctrl {margin:60px 0 0 0; padding:30px 0 0 0}
+    .meet-add-step-ctrl-next {width:166px}
+    .meet-add-step-ctrl-next .btn {height:53px; line-height:53px; font-size:17px}
+    .meet-add-step-ctrl-back {font-size:20px; line-height:53px}
+    .meet-add-step-ctrl-submit {float:none; margin:0}
+    .meet-add-step-ctrl-submit+.meet-add-step-ctrl-back {float:none; margin:30px 0 0 0; text-align:center}
+}
 
 .window-online-date {margin:26px 0 0 0; text-align:left}
 .window-online-date h3 {margin:0}
@@ -1157,7 +1356,7 @@ h1+.meet-card-btns {margin-top:16px}
 .window-online-type h3 {margin:0}
 .window-online-type .form-radio img {display:inline-block; vertical-align:middle; margin:-2px 10px 0 0}
 
-.meet-add-confirm {max-width:575px; margin:40px 0 0 0; border-top:1px solid #e3e3e3}
+.meet-add-confirm {max-width:1000px; margin:40px 0 0 0; border-top:1px solid #e3e3e3}
 .meet-add-confirm-row {border-bottom:1px solid #e3e3e3; padding:19px 0 24px 0}
 .meet-add-confirm-row::after {content:""; display:block; clear:both}
 .meet-add-confirm-label {float:left; font-size:18px; line-height:27px}
@@ -1165,11 +1364,24 @@ h1+.meet-card-btns {margin-top:16px}
 .meet-add-confirm-value span {font-weight:300; font-size:16px; color:#171717}
 .meet-add-confirm-value img {position:absolute; top:50%; right:100%; transform:translateY(-50%); margin-right:20px; max-width:100px}
 
+@media screen and (max-width:1169px) {
+    .meet-add-confirm-label {float:none; font-size:20px; line-height:30px}
+    .meet-add-confirm-value {float:none; width:auto; font-weight:600; font-size:20px; line-height:30px}
+    .meet-add-confirm-value img {position:relative; top:auto; right:auto; transform:none; margin:0 13px 0 0; max-width:126px; vertical-align:middle}
+}
+
 .meet-add-confirm .meet-add-step-ctrl {margin:0; border:none; padding:27px 0 0 0}
 
-.meet-add-datetime {max-width:710px; margin:40px 0 0 0; position:relative}
+.meet-add-datetime {max-width:1000px; margin:40px 0 0 0; position:relative}
 .meet-add-datetime.loading::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.5) url(../images/loading.gif) no-repeat center; z-index:2}
 .meet-add-datetime .meet-add-step-ctrl {margin:40px 0 0 0}
 
 .meet-add-company-wrapper.loading {position:relative}
 .meet-add-company-wrapper.loading::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.5) url(../images/loading.gif) no-repeat center; z-index:2}
+
+.meet-add-company-error {font-weight:500; font-size:14px; line-height:21px; margin:20px 0 0 0; display:none; color:#df0e0e}
+.meet-add-company-error.visible {display:block}
+
+.window-online-time-error {font-weight:500; font-size:14px; line-height:21px; display:none; color:#df0e0e}
+.fonts-loaded .window-online-time-error {font-family:Lato, sans-serif}
+.window-online-time-error.visible {display:inline}
