@@ -269,6 +269,20 @@ h1 {margin-top:41px}
     .dashboard-zone-loading-text {margin:30px 0 0 0; font-size:20px; line-height:30px; font-weight:600}
 }
 
+.dashboard-zone-cancel {border:1px solid #e2e2e2; margin:40px 0 0 0; padding:66px 0 85px 0; text-align:center; max-width:800px}
+.dashboard-zone-cancel-icon {width:82px; height:82px; margin:0 auto; text-align:center; line-height:82px; background:rgba(244, 204, 204, 0.63); border-radius:50%}
+.dashboard-zone-cancel-icon img {display:inline-block; vertical-align:middle; margin:-2px 0 0 0}
+.dashboard-zone-cancel-text {margin:26px 0 0 0; text-align:center; color:#171717; font-weight:normal; font-size:18px; line-height:27px}
+.dashboard-zone-cancel-text a {text-decoration:none; border-bottom:1px solid #2984df}
+.dashboard-zone-cancel-text a:hover {border-bottom-color:transparent}
+
+@media screen and (max-width:1169px) {
+    .dashboard-zone-cancel {margin:30px 0; padding:50px 20px 64px 20px}
+    .dashboard-zone-cancel-icon {width:112px; height:112px; line-height:112px}
+    .dashboard-zone-cancel-icon img {width:39px}
+    .dashboard-zone-cancel-text {margin:30px 0 0 0; font-size:20px; line-height:30px; font-weight:600}
+}
+
 .dashboard-zone-success {border:1px solid #e2e2e2; margin:40px 0 0 0; padding:66px 0 99px 0; text-align:center}
 .dashboard-zone-success-icon {width:82px; height:82px; margin:0 auto; text-align:center; line-height:82px; background:#e8f5fa; border-radius:50%}
 .dashboard-zone-success-icon img {display:inline-block; vertical-align:middle; margin:-2px 0 0 0}
