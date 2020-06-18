@@ -1,0 +1,44 @@
+<div class="window-auth">
+    <div class="window-title">Стать участником</div>
+    <form action="ajax/form-error.html" method="post" class="ajax-form">
+        <div class="registration-side-title">По вопросам посещения выставки-платформы свяжитесь с нашими профессиональными менеджерами, которые помогут вам оперативно решить все вопросы:</div>
+        <div class="registration-side-contacts">
+            <div class="contacts-item">
+                <div class="contacts-item-inner">
+                    <div class="contacts-item-content">
+                        <div class="contacts-item-photo"><img src="files/contacts-01.jpg" alt="" /></div>
+                        <div class="contacts-item-text">
+                            <div class="contacts-item-name">Виктория</div>
+                            <div class="contacts-item-phone"><a href="tel:+79161341321">+7 (916) 134-13-21</a></div>
+                            <div class="contacts-item-email"><a href="mailto:manager@rafi.moscow">manager@rafi.moscow</a></div>
+                        </div>
+                        <div class="contacts-item-mobile">
+                            <div class="contacts-item-mobile-inner">
+                                <a href="https://telegram.im/@struevvs" class="_blank"><img src="images/contacts-item-icon-1.svg" alt="" /></a>
+                                <a href="viber://chat?number=79255002881"><img src="images/contacts-item-icon-2.svg" alt="" /></a>
+                                <a href="https://wa.me/79255002881" class="_blank"><img src="images/contacts-item-icon-3.svg" alt="" /></a>
+                            </div>
+                        </div>
+                        <a href="#" class="contacts-item-mobile-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Или подайте заявку самостоятельно:</h3>
+
+        <div class="form-input"><span>Название компании <em>*</em></span><input type="text" name="company" value="" class="required" /></div>
+        <div class="form-select form-select-ajax" data-link="ajax/cities.json">
+            <select name="city" data-placeholder="Город *" class="required">
+            </select>
+        </div>
+        <div class="form-input"><span>Сайт компании или аккаунт в соц сетях <em>*</em></span><input type="text" name="url" value="" class="required" /></div>
+        <div class="form-input"><span>ФИО <em>*</em></span><input type="text" name="name" value="" class="required" /></div>
+        <div class="form-input"><span>Мобильный телефон <em>*</em></span><input type="text" name="phone" value="" class="required phoneRU" /><div class="form-hint">В формате +7 495 111-22-33</div></div>
+        <div class="form-input"><span>Адрес электронной почты <em>*</em></span><input type="text" name="email" value="" class="required email" /></div>
+        <div class="form-checkbox form-policy"><label><input type="checkbox" name="policy" class="required" /><span>Я принимаю условия <a href="#">политики конфиденциальности</a> и<br /> <a href="#">пользовательского соглашения</a></span></label></div>
+        <div class="window-auth-ctrl">
+            <div class="form-submit"><button type="submit" class="btn btn-mini">Подать заявку</button></div>
+        </div>
+    </form>
+</div>

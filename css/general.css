@@ -412,7 +412,7 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
 }
 
 .wrapper {width:100%; min-width:480px; min-height:100%; position:relative; overflow:hidden}
-.wrapper-inner {padding:82px 0 448px 0}
+.wrapper-inner {padding:82px 0 508px 0}
 
 @media screen and (max-width:1169px) {
     .wrapper-inner {padding:87px 0 70px 0}
@@ -687,7 +687,7 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:82px; backgro
     .file-link-info {font-size:16px; line-height:24px; margin:2px 0 0 0}
 }
 
-footer {height:367px; position:relative; margin:-367px 0 0 0; border-top:1px solid #f0f0f0; overflow:hidden}
+footer {height:427px; position:relative; margin:-427px 0 0 0; border-top:1px solid #f0f0f0; overflow:hidden}
 footer .container {position:relative}
 
 @media screen and (max-width:1169px) {
@@ -894,3 +894,157 @@ footer .container {position:relative}
 }
 
 .skiptranslate {display:none !important}
+
+.header-visit {float:right; margin:19px 29px 0 0; transition:all 0.5s}
+.header-fixed .header-visit {margin:10px 29px 0 0}
+.header-visit .btn {padding:0 15px}
+.header-visit .btn img {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0}
+
+@media screen and (max-width:1169px) {
+    .header-visit {display:none}
+}
+
+@media screen and (max-width:1169px) {
+    .mobile-menu-visit {padding:39px 40px 37px 40px; background:#fff}
+    .mobile-menu-visit .btn {z-index:1}
+    .mobile-menu-visit .btn img {display:inline-block; vertical-align:middle; margin:-6px 13px 0 0}
+}
+
+.window-auth {width:575px}
+
+@media screen and (max-width:1169px) {
+    .window-auth {width:440px}
+}
+
+.window-title {background:#d9eef7; font-weight:600; font-size:24px; line-height:36px; color:#414141; padding:17px 50px 17px 40px}
+
+@media screen and (max-width:1169px) {
+    .window-title {font-weight:normal; font-size:20px; line-height:30px; padding:13px 19px 14px 19px; color:#000}
+}
+
+.window-auth form {margin:0; padding:18px 30px 0 40px; text-align:center}
+
+@media screen and (max-width:1169px) {
+    .window-auth form {margin:30px 19px 0 19px; padding:0; text-align:left}
+    .window-auth .auth-social-title {margin:38px 0 0 0}
+    .window-auth .auth-social {text-align:center}
+}
+
+.window-auth-ctrl {margin:40px -30px 0 -40px; background:#d9eef7; text-align:center; padding:25px 0; direction:rtl}
+.window-auth-ctrl .form-submit {display:inline-block; vertical-align:middle; margin:0; direction:ltr; z-index:1}
+.window-auth-ctrl .btn-mini::before {display:none}
+
+@media screen and (max-width:1169px) {
+    .window-auth-ctrl {margin:46px -19px 0 -19px; padding:30px 0 40px 0; direction:ltr}
+    .window-auth-ctrl .form-submit {display:block; width:308px; margin:0 auto}
+    .window-auth-ctrl .form-submit .btn {padding:0; width:100%}
+    .window-auth-ctrl .auth-forgot {display:block; margin:28px 0 0 0; font-weight:normal}
+    .window-auth-ctrl .btn-mini::after {display:none}
+}
+
+.window-auth .auth-social-title {margin:30px 0 0 0}
+
+.window-auth .forgot-help {margin:14px -30px 0 -40px; padding:28px 0 0 0}
+.window-auth .forgot-help-window-registration {margin:0; padding:24px 0 0 0; border-top:none}
+.window-auth .forgot-help-contacts {float:none; width:377px; margin:0 auto}
+.window-auth .forgot-help-feedback {float:none; margin:30px auto 0 auto; padding:0 0 45px 0}
+.window-auth .forgot-auth {margin:33px 0 0 0}
+
+@media screen and (max-width:1169px) {
+    .window-auth .forgot-help {margin:14px -20px 0 -20px; padding-left:20px; padding-right:20px}
+}
+
+.window-auth .registration-side-title {margin:40px auto 0 auto; text-align:center; max-width:377px}
+.window-auth .contacts-item-inner {z-index:1}
+.window-auth .contacts-item-inner::before {z-index:0}
+.window-auth h3 {text-align:left; font-weight:normal}
+.window-auth form > h3:first-child {margin-top:11px}
+.window-auth .registration-zones {padding-bottom:0}
+
+@media screen and (max-width:1169px) {
+    .window-auth .registration-side-title {text-align:left; margin:40px 0 0 0}
+    .window-auth .registration-side-feedback {position:relative; z-index:1}
+    .window-auth .registration-side-feedback .btn::before {display:block}
+    .window-auth .registration-side-feedback .btn::after {display:inline-block}
+}
+
+.faq-list {margin:40px 0 0 0; border-top:1px solid #d2d2d2}
+.faq-item {border-bottom:1px solid #d2d2d2}
+.faq-item-title a {display:block; position:relative; padding:13px 32px 14px 0; font-size:20px; line-height:30px; color:#000; text-decoration:none}
+.faq-item-title a::after {content:""; display:block; width:16px; height:16px; position:absolute; right:0; top:17px; transition:all 0.2s; background:url(../images/faq-item-title.svg) no-repeat}
+.faq-item.open .faq-item-title a::after {transform:rotate(45deg)}
+.faq-item-title a:hover {color:#008cc9}
+.faq-item-answer {display:none; max-width:740px; padding:0 0 30px 0}
+.faq-btn {text-align:center; margin:40px 0 0 0}
+
+@media screen and (max-width:1169px) {
+    .faq-item-title a {padding:20px 32px 20px 0; font-size:24px; line-height:36px; font-weight:normal}
+    .faq-item-title a::after {width:25px; height:25px; top:26px; background-size:100%}
+    .faq-item-answer {max-width:none}
+}
+
+.faq h2 {margin:39px 0 10px 0; font-weight:600}
+.faq .faq-list {margin:10px 0 0 0}
+
+.faq-feedback {margin:80px 0 0 0}
+.faq-feedback-text {max-width:598px; margin:12px 0 0 0}
+.faq-feedback .forgot-help {margin:24px 0 0 0; border-top:none; padding:0}
+.faq-feedback .forgot-help-contacts {margin:0}
+.faq-feedback .forgot-help-feedback {float:left; margin:24px 0 0 40px; text-align:center}
+
+@media screen and (max-width:1169px) {
+    .faq-feedback .forgot-help-feedback {float:none; margin:24px 0 0 0; text-align:center}
+}
+
+.faq-menu {margin:34px 0; line-height:28px}
+.faq-menu::after {content:""; display:block; clear:both}
+.faq-menu a {float:left; height:28px; text-decoration:none; border-radius:2px; color:#000; padding:0 14px; margin:0 0 0 2px}
+.faq-menu a:first-child {margin:0}
+.faq-menu a:hover,
+.faq-menu a.active {background:#cce8f4}
+.faq-menu a.active {padding:0 18px}
+
+@media screen and (max-width:1169px) {
+    .faq-menu {display:none}
+}
+
+.window-faq {width:575px}
+
+@media screen and (max-width:1169px) {
+    .window-faq {width:440px}
+}
+
+.window-faq-container {padding:30px 40px 0 40px}
+.window-faq-container .faq-list {margin:30px 0 0 0; padding:0 0 71px 0}
+.window-faq-container .faq-item-title a {padding:17px 32px 17px 0; font-weight:normal; font-size:18px; line-height:27px; color:#171717}
+.window-faq-container .faq-item-title a::after {top:22px}
+.window-faq-container .faq-list-self .faq-item-title a {padding-top:10px}
+.window-faq-container .faq-list-self .faq-item-title a span {display:block; font-weight:300; font-size:14px; line-height:21px; color:#000}
+.window-faq-container .faq-list-self .faq-item-title a span strong {display:inline-block; vertical-align:middle; height:19px; background:#a0faaf; font-weight:normal; color:#1d1d1d; line-height:19px; margin:-2px 0 0 24px; padding:0 5px}
+
+.window-faq form {margin:30px 0 0 0}
+.window-faq-ctrl {margin:30px -40px 0 -40px; background:#d9eef7; text-align:center; padding:25px 0; direction:rtl}
+.window-faq-ctrl .form-submit {display:inline-block; vertical-align:middle; margin:0; direction:ltr; z-index:1}
+.window-faq-ctrl .btn-mini::before {display:none}
+
+@media screen and (max-width:1169px) {
+    .window-faq-ctrl {margin:38px -19px 0 -19px; padding:30px 0 40px 0; direction:ltr}
+    .window-faq-ctrl .form-submit {display:block; width:324px; margin:0 auto}
+    .window-faq-ctrl .form-submit .btn {padding:0; width:100%}
+}
+
+.window-faq-auth-link {display:inline-block; vertical-align:top; margin:10px 22px 0 0; font-size:14px; line-height:21px; color:#494949; font-weight:normal; text-decoration:none}
+.window-faq-auth-link:hover {color:#494949; text-decoration:none}
+.window-faq-auth-link span {border-bottom:1px dashed #bababa; transition:all 0.2s}
+.window-faq-auth-link:hover span {border-bottom-color:transparent}
+
+.faq-window-auth {padding:20px 0; text-align:center; font-weight:normal; font-size:18px; line-height:27px; color:#171717}
+.faq-window-auth::before {content:""; display:block; width:82px; height:82px; margin:0 auto 26px auto; background:#d9eef7 url(../images/faq-window-auth.svg) no-repeat center; border-radius:50%}
+
+.registration-side-title {color:#313131; max-width:377px}
+.registration-side-contacts {margin:24px 0 0 0; max-width:377px}
+.registration-side-contacts .contacts-item {padding:0; width:100%}
+
+@media screen and (max-width:1169px) {
+    .registration-side-contacts {margin:24px 0 0 0; max-width:none}
+}

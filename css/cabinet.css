@@ -14,15 +14,6 @@ h1 {margin-top:41px}
     .back-mobile+h1 {margin-top:38px}
 }
 
-.header-visit {float:right; margin:19px 29px 0 0; transition:all 0.5s}
-.header-fixed .header-visit {margin:10px 29px 0 0}
-.header-visit .btn {padding:0 15px}
-.header-visit .btn img {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0}
-
-@media screen and (max-width:1169px) {
-    .header-visit {display:none}
-}
-
 @media screen and (max-width:1169px) {
     .mobile-menu-visit {padding:39px 40px 37px 40px; background:#fff}
     .mobile-menu-visit .btn {z-index:1}
@@ -57,26 +48,24 @@ h1 {margin-top:41px}
 }
 
 .side {position:fixed; left:0; top:0; bottom:0; width:77px; overflow:hidden; z-index:100; border-right:1px solid #e3e3e3; background:#fff; transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)}
-.side:hover {width:274px; box-shadow:0px 4px 40px rgba(63, 63, 63, 0.15)}
+.side:hover {width:256px; box-shadow:0px 4px 40px rgba(63, 63, 63, 0.15)}
 
 @media screen and (max-width:1169px) {
     .side {display:none}
 }
 
 .side-menu {position:absolute; left:0; top:81px; bottom:0; right:0; white-space:nowrap; border-top:1px solid #e3e3e3; overflow:auto}
-.side-menu ul {position:relative; margin:0; padding:0; list-style:none; font-size:14px; line-height:55px}
+.side-menu ul {position:relative; margin:0; padding:0; list-style:none; font-size:12px; line-height:47px; font-weight:600; text-transform:uppercase}
 .side-menu ul li {margin:0; padding:0; position:relative}
 .side-menu ul li::before {display:none}
-.side-menu ul li.sep {border-top:1px solid #cce8f4; margin-top:6px; padding-top:6px}
-.side-menu ul li a {text-decoration:none; display:block; padding:0 0 0 78px; color:rgba(0, 0, 0, 0); height:55px; position:relative; transition:background 0.2s, color 0.5s ease}
+.side-menu ul li.sep {border-top:1px solid #dae2e5}
+.side-menu ul li a {text-decoration:none; display:block; padding:0 0 0 57px; color:rgba(0, 0, 0, 0); height:45px; position:relative; transition:background 0.2s, color 0.5s ease}
 .side:hover .side-menu ul li a {color:rgba(0, 0, 0, 1)}
 .side-menu ul li.active a,
-.side-menu ul li a:hover {background:#cce8f4}
-.side-menu-icon {display:block; position:absolute; left:20px; top:50%; width:38px; height:38px; margin:-19px 0 0 0; background:#cce8f4; transition:all 0.2s; text-align:center; line-height:38px; border-radius:50%}
-.side-menu ul li.active .side-menu-icon,
-.side-menu ul li a:hover .side-menu-icon {background:#fff}
+.side-menu ul li a:hover {background:#ddf5ff}
+.side-menu-icon {display:block; position:absolute; left:10px; top:50%; width:45px; transform:translateY(-50%); transition:all 0.2s; text-align:center; line-height:0}
 .side-menu-icon img {display:inline-block; vertical-align:middle}
-.side-menu-icon span {display:block; position:absolute; right:-2px; top:-2px; width:13px; height:13px; text-align:center; color:#fff; background:#fc4c4c; font-weight:500; font-size:12px; line-height:14px; border-radius:50%}
+.side-menu ul li a span {display:inline-block; vertical-align:middle; width:14px; height:14px; text-align:center; color:#fff; background:#fc4c4c; font-weight:500; font-size:10px; line-height:14px; border-radius:50%; margin:-2px 0 0 6px}
 
 .cabinet-container {margin:0 61px 0 138px}
 .cabinet-container-inner {float:left; width:100%}
@@ -314,12 +303,33 @@ h1 {margin-top:41px}
     .meets-dates a {margin:20px 0 0 10px; width:127px}
 }
 
-.meets-container {margin:35px 0 0 0; position:relative}
-.meets-content {position:absolute; left:-9999px; top:-9999px; width:100%; opacity:0; transition:opacity 0.75s ease, transform 0.75s ease; transform:translateY(20px)}
-.meets-content.active {position:relative; left:auto; top:auto; opacity:1; transform:translateY(0)}
+.meets-container {margin:40px 0 0 0; position:relative; max-width:717px}
+.meets-content {margin:50px 0 0 0}
+.meets-content:first-child {margin:0}
 
 @media screen and (max-width:1169px) {
-    .meets-container {margin:70px 0 0 0; position:relative}
+    .meets-container {margin:45px 0 0 0}
+    .meets-content {margin:30px 0 0 0}
+    .meets-content:first-child {margin:0}
+}
+
+.meets-content-header {display:block; position:relative; text-decoration:none}
+.meets-content-header::after {content:""; display:block; clear:both}
+.meets-content-header::before {content:""; display:block; position:absolute; left:0; top:50%; right:0; height:2px; background:#008cc9; margin-top:-1px; opacity:0.27}
+.meets-content-header-date {float:left; position:relative; background:#fff; padding:0 18px 0 0; font-size:24px; line-height:36px; font-weight:600; color:#000}
+.meets-content-header-date span {font-weight:300; font-size:20px; color:#595959; margin:0 0 0 6px}
+.meets-content-header-count {float:right; position:relative; background:#fff; padding:6px 21px 0 0}
+.meets-content-header-count span {display:block; height:24px; padding:0 10px; font-size:14px; font-weight:normal; line-height:24px; color:#1d1d1d; background:#e8f5fa}
+.meets-content-header-count::after {content:""; display:block; position:absolute; right:0; top:0; width:16px; height:36px; background:url(../images/meets-content-header.svg) no-repeat center; transition:all 0.2s}
+.meets-content.open .meets-content-header-count::after {transform:rotate(-45deg)}
+.meets-content .dashboard-zone-list {display:none; padding:24px 0 0 0}
+
+@media screen and (max-width:1169px) {
+    .meets-content-header-date {font-size:20px; line-height:30px}
+    .meets-content-header-count {padding:0 42px 0 0}
+    .meets-content-header-count span {height:30px; padding:0 8px; font-size:18px; line-height:30px}
+    .meets-content-header-count::after {top:-1px; width:33px; height:33px; background:url(../images/meets-content-header-mobile.svg) no-repeat center}
+    .meets-content .dashboard-zone-list {padding:10px 0 20px 0}
 }
 
 .meet-card-subtitle {margin:-10px 0 0 0; font-size:24px; line-height:36px; font-weight:normal; color:#9b9b9b; text-transform:uppercase}
@@ -958,7 +968,7 @@ h1+.meet-card-btns {margin-top:16px}
     .manager-table-arrow-right {display:none}
     .manager-table-arrow-left {display:none}
     .manager-table-cell-fixed {visibility:visible}
-    
+
     .manager-table-delegates .manager-table-row {border-bottom:1px solid #d8d8d8; border-top:8px solid #d6e0e4; padding:0 0 20px 0; position:relative}
     .manager-table-delegates .manager-table-row::after {content:""; display:block; clear:both}
     .manager-table-delegates .manager-table-events-title {background:#f6f8f9; font-weight:normal; font-size:20px; line-height:30px; color:#171717; padding:20px 20px 24px 64px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
@@ -973,7 +983,7 @@ h1+.meet-card-btns {margin-top:16px}
     .manager-table-delegates .manager-table-cell-action::before {content:""; display:block; position:absolute; left:20px; top:0; right:20px; height:1px; background:#008cc9}
     .manager-table-delegates .manager-table-cell-action a {width:53px; height:53px; line-height:53px; margin:0 5px}
     .manager-table-delegates .manager-table-cell-action a img {height:22px}
-    
+
     .manager-table-support .manager-table-row {border-bottom:1px solid #d8d8d8; border-top:8px solid #d6e0e4; padding:0 0 20px 0; position:relative}
     .manager-table-support .manager-table-row::after {content:""; display:block; clear:both}
     .manager-table-support .manager-table-events-title {background:#f6f8f9; font-weight:normal; font-size:20px; line-height:30px; color:#171717; padding:20px 20px 24px 64px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
