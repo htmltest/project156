@@ -118,7 +118,10 @@
 
 .select2-container--default.select2-container--open .select2-selection--single {
   box-shadow: 4px 4px 30px rgba(61, 61, 61, 0.15);
-  border: 1px solid #9acafb; }
+  border: 2px solid #9acafb; }
+  .select2-container--default.select2-container--open .select2-selection--single .select2-selection__rendered {
+    margin-left:-1px; margin-top:-1px;
+  }
 .select2-container--open .select2-dropdown {
   box-shadow: 4px 4px 30px rgba(61, 61, 61, 0.15);
   left: 0; }

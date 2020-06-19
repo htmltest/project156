@@ -86,12 +86,16 @@ $(document).ready(function() {
                     }
                 });
                 if (count > 1) {
+                    curField.addClass('isnotequal-error');
                     curField.addClass('error').removeClass('valid');
                     curField.parent().find('label.error').remove();
                     curField.parent().append('<label class="error">Данное значение уже указано</label>');
                 } else {
-                    curField.removeClass('error').addClass('valid');
-                    curField.parent().find('label.error').remove();
+                    curField.removeClass('isnotequal-error');
+                    if (!curField.hasClass('emailcheck-error')) {
+                        curField.removeClass('error').addClass('valid');
+                        curField.parent().find('label.error').remove();
+                    }
                 }
             }
         }, 100);
@@ -142,11 +146,15 @@ $(document).ready(function() {
                 }).done(function(html) {
                     if (html == 'false') {
                         curField.addClass('error').removeClass('valid');
+                        curField.addClass('emailcheck-error');
                         curField.parent().find('label.error').remove();
                         curField.parent().append('<label class="error">Данное значение уже зарегистрировано</label>');
                     } else {
-                        curField.removeClass('error').addClass('valid');
-                        curField.parent().find('label.error').remove();
+                        curField.removeClass('emailcheck-error');
+                        if (!curField.hasClass('isnotequal-error')) {
+                            curField.removeClass('error').addClass('valid');
+                            curField.parent().find('label.error').remove();
+                        }
                     }
                 });
             }
@@ -303,7 +311,7 @@ $(document).ready(function() {
         }
     });
 
-    $('body').on('click', '.window-close', function(e) {
+    $('body').on('click', '.window-close, .window-close-btn', function(e) {
         windowClose();
         e.preventDefault();
     });
@@ -416,6 +424,10 @@ function initForm(curForm) {
         if ($(this).val() != '') {
             $(this).parent().addClass('full');
         }
+    });
+
+    curForm.find('.form-input input:focus, .form-input textarea:focus').each(function() {
+        $(this).trigger('focus');
     });
 
     curForm.find('input.phoneRU').mask('+7 000 000-00-00');
@@ -614,11 +626,15 @@ function initForm(curForm) {
                     }).done(function(html) {
                         if (html == 'false') {
                             curField.addClass('error').removeClass('valid');
+                            curField.addClass('emailcheck-error');
                             curField.parent().find('label.error').remove();
                             curField.parent().append('<label class="error">Данное значение уже зарегистрировано</label>');
                         } else {
-                            curField.removeClass('error').addClass('valid');
-                            curField.parent().find('label.error').remove();
+                            curField.removeClass('emailcheck-error');
+                            if (!curField.hasClass('isnotequal-error')) {
+                                curField.removeClass('error').addClass('valid');
+                                curField.parent().find('label.error').remove();
+                            }
                         }
                     });
                 }
@@ -700,6 +716,15 @@ function initForm(curForm) {
                         }
                         curForm.removeClass('loading');
                     });
+                } else if (curForm.hasClass('window-form')) {
+                    var formData = new FormData(form);
+
+                    if (curForm.find('[type=file]').length != 0) {
+                        var file = curForm.find('[type=file]')[0].files[0];
+                        formData.append('file', file);
+                    }
+
+                    windowOpen(curForm.attr('action'), formData);
                 } else {
                     if (curForm.find('.inncheck, .emailcheck').length > 0) {
                         var count = 0;

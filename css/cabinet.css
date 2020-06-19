@@ -39,7 +39,6 @@ h1 {margin-top:41px}
 }
 
 .cabinet {position:relatve; min-height:calc(100vh - 82px - 322px)}
-.cabinet::before {content:""; display:block; position:absolute; left:76px; top:0; bottom:0; width:1px; background:#e3e3e3}
 .cabinet::after {content:""; display:block; clear:both}
 
 @media screen and (max-width:1169px) {
@@ -47,7 +46,7 @@ h1 {margin-top:41px}
     .cabinet::before {display:none}
 }
 
-.side {position:fixed; left:0; top:0; bottom:0; width:77px; overflow:hidden; z-index:100; border-right:1px solid #e3e3e3; background:#fff; transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)}
+.side {position:fixed; left:0; top:0; bottom:0; width:62px; overflow:hidden; z-index:100; border-right:1px solid #e3e3e3; background:#fff; transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)}
 .side:hover {width:256px; box-shadow:0px 4px 40px rgba(63, 63, 63, 0.15)}
 
 @media screen and (max-width:1169px) {
@@ -55,17 +54,18 @@ h1 {margin-top:41px}
 }
 
 .side-menu {position:absolute; left:0; top:81px; bottom:0; right:0; white-space:nowrap; border-top:1px solid #e3e3e3; overflow:auto}
-.side-menu ul {position:relative; margin:0; padding:0; list-style:none; font-size:12px; line-height:47px; font-weight:600; text-transform:uppercase}
+.side-menu ul {position:relative; margin:0; padding:0; list-style:none; font-size:12px; line-height:44px; font-weight:600; text-transform:uppercase}
 .side-menu ul li {margin:0; padding:0; position:relative}
 .side-menu ul li::before {display:none}
 .side-menu ul li.sep {border-top:1px solid #dae2e5}
-.side-menu ul li a {text-decoration:none; display:block; padding:0 0 0 57px; color:rgba(0, 0, 0, 0); height:45px; position:relative; transition:background 0.2s, color 0.5s ease}
+.side-menu ul li a {text-decoration:none; display:block; padding:0 0 0 57px; color:rgba(0, 0, 0, 0); height:44px; position:relative; transition:background 0.2s, color 0.5s ease}
 .side:hover .side-menu ul li a {color:rgba(0, 0, 0, 1)}
 .side-menu ul li.active a,
 .side-menu ul li a:hover {background:#ddf5ff}
-.side-menu-icon {display:block; position:absolute; left:10px; top:50%; width:45px; transform:translateY(-50%); transition:all 0.2s; text-align:center; line-height:0}
+.side-menu-icon {display:block; position:absolute; left:0; top:50%; width:62px; transform:translateY(-50%); transition:all 0.2s; text-align:center; line-height:0}
 .side-menu-icon img {display:inline-block; vertical-align:middle}
-.side-menu ul li a span {display:inline-block; vertical-align:middle; width:14px; height:14px; text-align:center; color:#fff; background:#fc4c4c; font-weight:500; font-size:10px; line-height:14px; border-radius:50%; margin:-2px 0 0 6px}
+.side-menu ul li a span {display:block; width:14px; height:14px; text-align:center; color:#fff; background:#fc4c4c; font-weight:500; font-size:10px; line-height:14px; border-radius:50%; margin:0; position:absolute; left:36px; top:10px}
+.side:hover .side-menu ul li a span {display:inline-block; vertical-align:middle; margin:-2px 0 0 6px; position:relative; left:auto; top:auto}
 
 .cabinet-container {margin:0 61px 0 138px}
 .cabinet-container-inner {float:left; width:100%}
