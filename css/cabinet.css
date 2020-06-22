@@ -181,7 +181,7 @@ h1 {margin-top:41px}
 
 .catalogue-item-country-item {margin:5px 0 0 0; font-size:14px; line-height:25px; font-weight:normal; color:#6b6b6b}
 .catalogue-item-country-item:first-child {margin:0}
-.catalogue-item-country-item img {display:inline-block; vertical-align:middle; height:18px; margin:-4px 5px 0 0}
+.catalogue-item-country-item img {display:inline-block; vertical-align:middle; height:15px; margin:-4px 5px 0 0}
 .catalogue-item-country-item-hint {position:relative}
 .catalogue-item-country-item-hint-title {display:none; position:absolute; z-index:2; left:100%; margin-left:11px; top:50%; white-space:nowrap; height:42px; margin-top:-21px; padding:0 10px; font-size:14px; line-height:40px; color:#353535; font-size:16px; font-weight:normal; letter-spacing:0; background:#fff; border:1px solid #e2e2e2; box-shadow:3px 9px 20px rgba(0, 0, 0, 0.11)}
 .catalogue-item-country-item-hint:hover .catalogue-item-country-item-hint-title {display:block}
@@ -195,6 +195,7 @@ h1 {margin-top:41px}
 .manager-table-participant-text-countries {display:inline}
 .manager-table-participant-text .catalogue-item-country-item {display:inline-block; vertical-align:middle; font-size:12px; line-height:18px; font-weight:300; color:#313131; margin:0}
 .manager-table-participant-text .catalogue-item-country-item:first-child {margin:0 0 0 8px}
+.manager-table-participant-text .manager-table-participant-text-countries:first-child .catalogue-item-country-item:first-child {margin:0}
 .manager-table-participant-text .catalogue-item-country-item-title {display:none}
 .manager-table-participant-text .catalogue-item-country-item-title+.catalogue-item-country-region {margin:0}
 
@@ -337,6 +338,7 @@ h1 {margin-top:41px}
 .meets-content-header-count::after {content:""; display:block; position:absolute; right:0; top:0; width:16px; height:36px; background:url(../images/meets-content-header.svg) no-repeat center; transition:all 0.2s}
 .meets-content.open .meets-content-header-count::after {transform:rotate(-45deg)}
 .meets-content .dashboard-zone-list {display:none; padding:24px 0 0 0}
+.meets-content.visible .dashboard-zone-list {display:block}
 
 @media screen and (max-width:1169px) {
     .meets-content-header-date {font-size:20px; line-height:30px}
@@ -1127,21 +1129,31 @@ h1+.meet-card-btns {margin-top:16px}
 .faq-list {margin:30px 0 0 0; border-top:1px solid #d2d2d2}
 .faq-item {border-bottom:1px solid #d2d2d2}
 .faq-item-title a {display:block; position:relative; padding:17px 32px 17px 0; font-weight:normal; font-size:20px; line-height:30px; color:#000; text-decoration:none}
-.faq-item-title a::after {content:""; display:block; width:16px; height:16px; position:absolute; right:0; top:30px; transition:all 0.2s; background:url(../images/faq-item-title.svg) no-repeat}
+.faq-item-title a::after {content:""; display:block; width:16px; height:16px; position:absolute; right:0; top:24px; transition:all 0.2s; background:url(../images/faq-item-title.svg) no-repeat}
 .faq-item.open .faq-item-title a::after {transform:rotate(45deg)}
 .faq-item-title a:hover {color:#008cc9}
+.faq-item-title > div {display:block; position:relative; padding:17px 32px 17px 0; font-weight:normal; font-size:20px; line-height:30px; color:#000; text-decoration:none}
 .faq-item-answer {display:none; max-width:740px; padding:0 0 30px 0}
 .faq-btn {text-align:center; margin:40px 0 0 0}
 
 @media screen and (max-width:1169px) {
     .faq-item-title a {padding:20px 32px 20px 0; font-size:24px; line-height:36px; font-weight:normal}
     .faq-item-title a::after {width:25px; height:25px; top:26px; background-size:100%}
+    .faq-item-title > div {padding:20px 32px 20px 0; font-size:24px; line-height:36px; font-weight:normal}
     .faq-item-answer {max-width:none}
 }
 
 .faq-list-self .faq-item-title a {padding-top:10px}
+.faq-list-self .faq-item-title a::after {top:30px}
 .faq-list-self .faq-item-title a span {display:block; font-weight:300; font-size:14px; line-height:21px; color:#000}
 .faq-list-self .faq-item-title a strong {display:inline-block; vertical-align:middle; height:19px; background:#de4c55; font-weight:normal; color:#fff; font-size:14px; line-height:19px; margin:-2px 0 0 24px; padding:0 5px}
+.faq-list-self .faq-item-title a strong.new-answer {background:#4dc260}
+.faq-item-new-answer .faq-item-title a {position:relative}
+.faq-item-new-answer .faq-item-title a::before {content:""; display:block; position:absolute; left:-24px; top:0; bottom:0; width:4px; background:#4dc260}
+
+.faq-list-self .faq-item-title > div {padding-top:10px}
+.faq-list-self .faq-item-title > div span {display:block; font-weight:300; font-size:14px; line-height:21px; color:#000}
+.faq-list-self .faq-item-title > div strong {display:inline-block; vertical-align:middle; height:19px; background:#de4c55; font-weight:normal; color:#fff; font-size:14px; line-height:19px; margin:-2px 0 0 24px; padding:0 5px}
 
 .faq-list-add {margin:30px 0 0 0}
 .faq-list-add .btn {padding:0 20px}

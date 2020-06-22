@@ -141,13 +141,6 @@ $(document).ready(function() {
         curTable.find('.manager-table-head-schedule').eq(curIndex).addClass('hover');
     });
 
-    $('body').on('click', '.faq-item-title a', function(e) {
-        var curItem = $(this).parent().parent();
-        curItem.toggleClass('open');
-        curItem.find('.faq-item-answer').stop(true, true).slideToggle();
-        e.preventDefault();
-    });
-
     $('body').on('click', '.support-search-link', function(e) {
         $('html').addClass('support-search-open');
         $('.support-search-window-input input').trigger('focus');

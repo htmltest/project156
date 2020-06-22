@@ -974,6 +974,13 @@ footer .container {position:relative}
     .window-auth .registration-side-feedback .btn::after {display:inline-block}
 }
 
+.window-participant form {text-align:left}
+.window-participant .registration-side-title {margin:12px 0 0 0; text-align:left; max-width:none}
+
+@media screen and (max-width:1169px) {
+    .window-participant .registration-side-title {margin:-10px 0 0 0}
+}
+
 .faq-list {margin:40px 0 0 0; border-top:1px solid #d2d2d2}
 .faq-item {border-bottom:1px solid #d2d2d2}
 .faq-item-title a {display:block; position:relative; padding:13px 32px 14px 0; font-size:20px; line-height:30px; color:#000; text-decoration:none}
@@ -1061,4 +1068,19 @@ footer .container {position:relative}
 
 @media screen and (max-width:1169px) {
     .registration-side-contacts {margin:24px 0 0 0; max-width:none}
+}
+
+.window-body {padding:40px}
+.window-body > *:first-child {margin-top:0}
+.window-body > *:last-child {margin-bottom:0}
+
+@media screen and (max-width:1169px) {
+}
+
+.window-btns {background:#d9eef7; text-align:center; padding:25px 0}
+.window-btns .btn-mini::before {display:none}
+
+@media screen and (max-width:1169px) {
+    .window-btns {padding:30px 0}
+    .window-btns .btn-mini::after {display:none}
 }
