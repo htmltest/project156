@@ -415,6 +415,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('body').on('click', '.faq-item-title-sublink[data-href]', function(e) {
+        window.location.href = $(this).attr('data-href');
+        e.preventDefault();
+    });
+
 });
 
 function initForm(curForm) {
@@ -640,7 +645,7 @@ function initForm(curForm) {
                 }
             });
 
-            if (curForm.parents().filter('.window-online').length == 1) {
+            if (curForm.parents().filter('.window-online').length == 1 || curForm.parents().filter('.meet-add-form').length == 1) {
                 if (curForm.find('.window-online-type input:checked').length == 0) {
                     curForm.find('.window-online-type h3 .error').addClass('visible');
                 } else {
@@ -658,6 +663,9 @@ function initForm(curForm) {
                 }
                 if ($('.window-online h3 .error.visible').length > 0) {
                     $('.window').animate({'scrollTop': 0});
+                }
+                if ($('.meet-add-form h3 .error.visible').length > 0) {
+                    $('html, body').animate({'scrollTop': $('.meet-add-form h3 .error.visible').eq(0).offset().top - $('header').height() - 50});
                 }
 
             }
@@ -732,6 +740,57 @@ function initForm(curForm) {
                             curForm.parent().find('.faq-list-self').prepend('<div class="faq-item"><div class="faq-item-title"><a href="#">' + data.title + '<span>' + data.date + '</span></span></a></div></div>');
                             curForm.find('.message').remove();
                             curForm.prepend('<div class="message message-success"><div class="message-title">' + curForm.find('.form-success-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
+                        } else {
+                            curForm.find('.message').remove();
+                            curForm.prepend('<div class="message message-error"><div class="message-title">' + curForm.find('.form-error-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
+                        }
+                        curForm.removeClass('loading');
+                    });
+                } else if (curForm.hasClass('ajax-form-comment')) {
+                    curForm.addClass('loading');
+                    var formData = new FormData(form);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: curForm.attr('action'),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json',
+                        data: formData,
+                        cache: false
+                    }).done(function(data) {
+                        if (data.status) {
+                            curForm.find('textarea').val('').trigger('blur');
+                            curForm.parent().find('.comment-list').prepend('<div class="comment-item"><div class="comment-item-title"><div class="comment-item-date">' + data.date + '</div><div class="meet-card-company-info-props-delegate"><div class="manager-table-delegate-letter manager-table-delegate-letter-' + data.color + '">' + data.letter + '</div><div class="manager-table-delegate-name">' + data.author + '</div></div></div><div class="comment-item-text">' + data.text + '</div><a href="#" class="comment-item-link"></a></div>');
+                            curForm.find('.message').remove();
+                            curForm.prepend('<div class="message message-success"><div class="message-title">' + curForm.find('.form-success-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
+                        } else {
+                            curForm.find('.message').remove();
+                            curForm.prepend('<div class="message message-error"><div class="message-title">' + curForm.find('.form-error-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
+                        }
+                        curForm.removeClass('loading');
+                    });
+                } else if (curForm.hasClass('ajax-form-faq-add')) {
+                    curForm.addClass('loading');
+                    var formData = new FormData(form);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: curForm.attr('action'),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json',
+                        data: formData,
+                        cache: false
+                    }).done(function(data) {
+                        if (data.status) {
+                            curForm.find('textarea').val('').trigger('blur');
+                            $('<div class="faq-card-list-item"><div class="faq-card-list-item-title">Ответ<span>' + data.date + '</span></div><div class="faq-card-list-item-text">' + data.text + '</div></div>').insertBefore(curForm.parent());
+                            curForm.find('.message').remove();
+                            var curTop = curForm.parent().parent().find('.faq-card-list-item:last').offset().top;
+                            curForm.parent().parent().find('.support-open-form').remove();
+                            curForm.parent().remove();
+                            $('html, body').animate({'scrollTop': curTop - $('header').height()});
                         } else {
                             curForm.find('.message').remove();
                             curForm.prepend('<div class="message message-error"><div class="message-title">' + curForm.find('.form-error-text-title').html() + '</div><div class="message-text">' + data.message + '</div></div>')
@@ -911,10 +970,10 @@ function windowOpen(linkWindow, dataWindow) {
             $('.window .window-loading').remove();
         }
 
-        $('.window-catalogue-descr-wrap').each(function() {
+        $('.archive-card-descr-container').each(function() {
             var curBlock = $(this);
             curBlock.removeClass('open');
-            if (curBlock.height() < curBlock.find('.window-catalogue-descr-inner').height()) {
+            if (curBlock.height() < curBlock.find('.archive-card-descr-content').height()) {
                 curBlock.addClass('with-more');
             } else {
                 curBlock.removeClass('with-more');
@@ -956,6 +1015,7 @@ function windowOpen(linkWindow, dataWindow) {
             curTabsMenu.mCustomScrollbar({
                 axis: 'x'
             });
+            $('.window').addClass('with-tabs');
         });
 
         var windowGalleryCount = 0;
@@ -971,6 +1031,8 @@ function windowOpen(linkWindow, dataWindow) {
                 });
             }
         });
+
+        $(window).trigger('resize');
 
    });
 }
